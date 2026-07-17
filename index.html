@@ -134,6 +134,13 @@
     color:var(--grad2);text-decoration:none}
   .link:hover{text-decoration:underline}
 
+  .books{margin-top:10px;padding:11px 13px;border-radius:12px;font-size:.8rem;line-height:1.5;
+    background:linear-gradient(120deg,rgba(255,154,61,.12),rgba(248,87,192,.1));
+    border:1px solid rgba(255,154,61,.25)}
+  .books .bh{display:block;font-size:.7rem;font-weight:700;letter-spacing:.03em;
+    color:var(--gov);margin-bottom:4px}
+  .books a{color:var(--prof);font-weight:600;text-decoration:none}
+  .books a:hover{text-decoration:underline}
   .note{background:rgba(255,246,229,.8);backdrop-filter:blur(8px);border-radius:16px;padding:14px;
     font-size:.8rem;color:#9a6b1a;margin-top:20px;border:1.5px solid rgba(255,224,163,.8)}
   footer{margin-top:22px;padding:16px 4px;font-size:.78rem;color:var(--muted);text-align:center}
@@ -188,64 +195,64 @@ const exams = [
   {name:"TCAS70 — ลงทะเบียน myTCAS", org:"ทปอ. (Dek70 เข้าเรียนปี 2570)", cat:"th", tag:"สอบในไทย", isNew:true,
    key:"2026-07-15", keyLabel:"เปิดลงทะเบียน",
    dates:[["เปิดลงทะเบียน myTCAS","15 ก.ค. 69 (09.00 น.)",true],["สอบ TGAT/TPAT2-5","30 ม.ค.–1 ก.พ. 70",false],["TPAT1 กสพท","13 ก.พ. 70",false]],
-   fee:"<b>ลงทะเบียนฟรี</b> · ทำครั้งเดียวใช้ได้ทุกรอบ", apps:"ผู้เข้าระบบ ~3-4 แสนคน/ปี", seats:"รับตามโควตาแต่ละมหาลัย (รวมทุกรอบ)", prep:"ใช้บัตรประชาชน + อีเมล ยืนยันตัวตนผ่าน ThaiD · ต้องลงทะเบียนก่อนถึงสมัครสอบ/ยื่นคะแนนได้", link:"https://www.mytcas.com"},
+   fee:"<b>ลงทะเบียนฟรี</b> · ทำครั้งเดียวใช้ได้ทุกรอบ", apps:"ผู้เข้าระบบ ~3-4 แสนคน/ปี", seats:"รับตามโควตาแต่ละมหาลัย (รวมทุกรอบ)", prep:"ใช้บัตรประชาชน + อีเมล ยืนยันตัวตนผ่าน ThaiD · ต้องลงทะเบียนก่อนถึงสมัครสอบ/ยื่นคะแนนได้", books:"คู่มือเรียน/สอบ ม.ปลาย เตรียม Dek70 ล่วงหน้า", booklink:"https://thinkbeyondbook.com/product/categories/24", link:"https://www.mytcas.com"},
 
   {name:"สอบตุลาการศาลปกครองชั้นต้น", org:"สำนักงานศาลปกครอง", cat:"gov", tag:"ราชการ", isNew:true,
    key:"2026-07-24", keyLabel:"ปิดรับสมัคร",
    dates:[["รับสมัคร","15 มิ.ย.–24 ก.ค. 69",true]],
-   apps:"แล้วแต่รอบรับสมัคร", seats:"ตามอัตราว่าง (จำนวนน้อย แข่งสูง)", prep:"ต้องจบนิติศาสตร์ + มีประสบการณ์ทางกฎหมายตามเกณฑ์ · สอบข้อเขียนกฎหมายมหาชน/ปกครอง + สัมภาษณ์ · เป็นสายงานเฉพาะทางกฎหมาย", fee:"ตามประกาศศาลปกครอง", link:"https://www.admincourt.go.th"},
+   apps:"แล้วแต่รอบรับสมัคร", seats:"ตามอัตราว่าง (จำนวนน้อย แข่งสูง)", prep:"ต้องจบนิติศาสตร์ + มีประสบการณ์ทางกฎหมายตามเกณฑ์ · สอบข้อเขียนกฎหมายมหาชน/ปกครอง + สัมภาษณ์ · เป็นสายงานเฉพาะทางกฎหมาย", fee:"ตามประกาศศาลปกครอง", books:"หนังสือกฎหมายและภาษี", booklink:"https://thinkbeyondbook.com/product/categories/44", link:"https://www.admincourt.go.th"},
 
   {name:"สตง. — สอบบรรจุข้าราชการ", org:"สำนักงานการตรวจเงินแผ่นดิน", cat:"gov", tag:"ราชการ", isNew:true,
    key:"2026-07-20", keyLabel:"ปิดรับสมัคร",
    dates:[["รับสมัคร","30 มิ.ย.–20 ก.ค. 69",true],["เงื่อนไข","ต้องผ่าน ภาค ก ก.พ. · 8 อัตรา",false]],
-   apps:"แล้วแต่รอบ (แข่งขันสูง)", seats:"8 อัตรา (รอบนี้)", prep:"ต้องผ่าน ภาค ก ก.พ. ก่อน + วุฒิ ป.ตรีสาขาตามประกาศ · สอบ ภาค ข ความรู้เฉพาะตำแหน่ง (ตรวจสอบ/บัญชี/กฎหมาย) + ภาค ค สัมภาษณ์", fee:"วุฒิ ป.ตรี ตามประกาศ", link:"https://www.audit.go.th"},
+   apps:"แล้วแต่รอบ (แข่งขันสูง)", seats:"8 อัตรา (รอบนี้)", prep:"ต้องผ่าน ภาค ก ก.พ. ก่อน + วุฒิ ป.ตรีสาขาตามประกาศ · สอบ ภาค ข ความรู้เฉพาะตำแหน่ง (ตรวจสอบ/บัญชี/กฎหมาย) + ภาค ค สัมภาษณ์", fee:"วุฒิ ป.ตรี ตามประกาศ", books:"คู่มือสอบเข้ารับราชการ (อื่นๆ) + ภาค ก", booklink:"https://thinkbeyondbook.com/product/categories/132", link:"https://www.audit.go.th"},
 
   {name:"มทร.ธัญบุรี — พนักงานมหาวิทยาลัย", org:"มหาวิทยาลัยเทคโนโลยีราชมงคลธัญบุรี", cat:"gov", tag:"ราชการ", isNew:true,
    key:"2026-07-24", keyLabel:"ปิดรับสมัคร",
    dates:[["รับสมัคร","13–24 ก.ค. 69",true],["เงื่อนไข","ไม่ต้องผ่าน ก.พ. · 14 อัตรา",false]],
-   apps:"แล้วแต่รอบ", seats:"14 อัตรา (รอบนี้)", prep:"ไม่ต้องผ่าน ก.พ. · วุฒิ ป.ตรี/โท ตามตำแหน่ง · สอบความรู้เฉพาะตำแหน่ง + สัมภาษณ์ · บางตำแหน่งสอบปฏิบัติ/ภาษาอังกฤษ", fee:"วุฒิ ป.ตรี/โท", link:"https://www.rmutt.ac.th"},
+   apps:"แล้วแต่รอบ", seats:"14 อัตรา (รอบนี้)", prep:"ไม่ต้องผ่าน ก.พ. · วุฒิ ป.ตรี/โท ตามตำแหน่ง · สอบความรู้เฉพาะตำแหน่ง + สัมภาษณ์ · บางตำแหน่งสอบปฏิบัติ/ภาษาอังกฤษ", fee:"วุฒิ ป.ตรี/โท", books:"คู่มือสอบบรรจุเข้าทำงาน/พนักงานราชการ", booklink:"https://thinkbeyondbook.com/product/categories/67", link:"https://www.rmutt.ac.th"},
 
   {name:"กรมประชาสัมพันธ์ — บรรจุข้าราชการ", org:"กรมประชาสัมพันธ์", cat:"gov", tag:"ราชการ", isNew:true,
    key:"2026-07-16", keyLabel:"ปิดรับสมัคร",
    dates:[["รับสมัคร","26 มิ.ย.–16 ก.ค. 69",true],["เงื่อนไข","15 อัตรา",false]],
-   apps:"แล้วแต่รอบ", seats:"15 อัตรา (รอบนี้)", prep:"ต้องผ่าน ภาค ก ก.พ. + วุฒิ ป.ตรีตามตำแหน่ง (นักสื่อสาร/นักประชาสัมพันธ์ ฯลฯ) · สอบ ภาค ข ความรู้เฉพาะ + ภาค ค สัมภาษณ์", fee:"ตามประกาศ", link:"https://www.prd.go.th"},
+   apps:"แล้วแต่รอบ", seats:"15 อัตรา (รอบนี้)", prep:"ต้องผ่าน ภาค ก ก.พ. + วุฒิ ป.ตรีตามตำแหน่ง (นักสื่อสาร/นักประชาสัมพันธ์ ฯลฯ) · สอบ ภาค ข ความรู้เฉพาะ + ภาค ค สัมภาษณ์", fee:"ตามประกาศ", books:"คู่มือสอบเข้ารับราชการ (อื่นๆ)", booklink:"https://thinkbeyondbook.com/product/categories/132", link:"https://www.prd.go.th"},
 
   {name:"TGAT / TPAT (2–5)", org:"ทปอ. — TCAS69", cat:"th", tag:"สอบในไทย",
    key:"2025-12-13", keyLabel:"สอบ",
    dates:[["สอบ TGAT/TPAT2-5","13–15 ธ.ค. 68",false],["ประกาศผล (กระดาษ)","13 ม.ค. 69",false]],
-   fee:"≈ 140 บ./วิชา", apps:"TGAT ผู้สมัคร ~2-3 แสนคน/ปี", seats:"ไม่จำกัด (เป็นคะแนนยื่น ไม่ใช่ที่นั่ง)", prep:"TGAT = สื่อสารอังกฤษ+คิดเหตุผล+สมรรถนะทำงาน · TPAT2-5 = ถนัดเฉพาะ (ศิลป์/วิทย์-วิศวะ/สถาปัตย์/ครู) · ยื่นได้ทุกรอบ 2-4", link:"https://www.mytcas.com"},
+   fee:"≈ 140 บ./วิชา", apps:"TGAT ผู้สมัคร ~2-3 แสนคน/ปี", seats:"ไม่จำกัด (เป็นคะแนนยื่น ไม่ใช่ที่นั่ง)", prep:"TGAT = สื่อสารอังกฤษ+คิดเหตุผล+สมรรถนะทำงาน · TPAT2-5 = ถนัดเฉพาะ (ศิลป์/วิทย์-วิศวะ/สถาปัตย์/ครู) · ยื่นได้ทุกรอบ 2-4", books:"คู่มือเรียน/สอบ ม.ปลาย + แนวข้อสอบเข้ามหาลัย", booklink:"https://thinkbeyondbook.com/product/categories/24", link:"https://www.mytcas.com"},
   {name:"TPAT1 วิชาเฉพาะ กสพท", org:"กสพท — TCAS69", cat:"th", tag:"สอบในไทย",
    key:"2026-02-14", keyLabel:"สอบ",
    dates:[["สอบ","14 ก.พ. 69",false],["ประกาศผล","13 มี.ค. 69",false]],
-   fee:"ตามประกาศ กสพท", apps:"ผู้สมัคร ~40,000-50,000 คน/ปี", seats:"รับ ~2,300+ ที่นั่ง (แพทย์~1,170)", prep:"3 พาร์ท: เชาวน์ปัญญา + จริยธรรมแพทย์ + ทักษะเชื่อมโยง · ใช้ยื่น กสพท (แพทย์/ทันต/เภสัช/สัตว) คู่กับ A-Level", link:"https://www9.si.mahidol.ac.th"},
+   fee:"ตามประกาศ กสพท", apps:"ผู้สมัคร ~40,000-50,000 คน/ปี", seats:"รับ ~2,300+ ที่นั่ง (แพทย์~1,170)", prep:"3 พาร์ท: เชาวน์ปัญญา + จริยธรรมแพทย์ + ทักษะเชื่อมโยง · ใช้ยื่น กสพท (แพทย์/ทันต/เภสัช/สัตว) คู่กับ A-Level", books:"คู่มือติวเข้ม ม.ปลาย สายวิทย์-สุขภาพ", booklink:"https://thinkbeyondbook.com/product/categories/24", link:"https://www9.si.mahidol.ac.th"},
   {name:"A-Level (7 วิชา)", org:"ทปอ. — TCAS69", cat:"th", tag:"สอบในไทย",
    key:"2026-03-14", keyLabel:"สอบ",
    dates:[["สอบ","14–16 มี.ค. 69",false],["พิมพ์บัตรที่นั่ง","28 ก.พ.–16 มี.ค. 69",false],["ประกาศผล","20 เม.ย. 69",true]],
-   fee:"≈ 100 บ./วิชา", apps:"ผู้สมัคร ~2-3 แสนคน/ปี (แล้วแต่วิชา)", seats:"ไม่จำกัด (เป็นคะแนนยื่นรอบ 3)", prep:"เลือกสอบตามคณะ: คณิต1/2, ฟิสิกส์, เคมี, ชีวะ, สังคม, ไทย, อังกฤษ, วิทย์ประยุกต์, ภาษาต่างประเทศ · เป็นคะแนนหลักรอบ 3 Admission", link:"https://www.mytcas.com"},
+   fee:"≈ 100 บ./วิชา", apps:"ผู้สมัคร ~2-3 แสนคน/ปี (แล้วแต่วิชา)", seats:"ไม่จำกัด (เป็นคะแนนยื่นรอบ 3)", prep:"เลือกสอบตามคณะ: คณิต1/2, ฟิสิกส์, เคมี, ชีวะ, สังคม, ไทย, อังกฤษ, วิทย์ประยุกต์, ภาษาต่างประเทศ · เป็นคะแนนหลักรอบ 3 Admission", books:"คู่มือเรียน/สอบ ม.ปลาย — ครบทุกวิชา A-Level", booklink:"https://thinkbeyondbook.com/product/categories/24", link:"https://www.mytcas.com"},
   {name:"IELTS", org:"British Council / IDP", cat:"inter", tag:"ต่างประเทศ",
    key:null, keyLabel:"เปิดตลอดปี",
    dates:[["รอบสอบ","ตลอดปี เลือกวันได้",true],["รูปแบบ","คอมพิวเตอร์ (ตั้งแต่ 22 มี.ค. 69)",false],["สนามสอบ","22 ศูนย์ 12 จังหวัด",false]],
-   fee:"<b>~7,xxx–8,xxx บาท</b> (ยืนยันกับผู้จัด)", apps:"ทั่วโลก ~4 ล้านครั้ง/ปี · ไทยหลักหมื่น", seats:"ไม่จำกัด (สอบได้ไม่จำกัดครั้ง)", prep:"4 ทักษะ: ฟัง-อ่าน-เขียน-พูด · ป.ตรีมัก 6.0-6.5 / ป.โท 6.5-7.0 · สายแพทย์/กฎหมายอาจ 7.0+ ทุกพาร์ท · ผลอยู่ได้ 2 ปี", link:"https://ielts.idp.com/thailand/test-dates"},
+   fee:"<b>~7,xxx–8,xxx บาท</b> (ยืนยันกับผู้จัด)", apps:"ทั่วโลก ~4 ล้านครั้ง/ปี · ไทยหลักหมื่น", seats:"ไม่จำกัด (สอบได้ไม่จำกัดครั้ง)", prep:"4 ทักษะ: ฟัง-อ่าน-เขียน-พูด · ป.ตรีมัก 6.0-6.5 / ป.โท 6.5-7.0 · สายแพทย์/กฎหมายอาจ 7.0+ ทุกพาร์ท · ผลอยู่ได้ 2 ปี", books:"เตรียมสอบ TOEIC/TOEFL/IELTS/TU-GET/CU-TEP", booklink:"https://thinkbeyondbook.com/product/categories/141", link:"https://ielts.idp.com/thailand/test-dates"},
   {name:"TOEFL iBT", org:"ETS", cat:"inter", tag:"ต่างประเทศ",
    key:null, keyLabel:"เปิดตลอดปี",
    dates:[["รอบสอบ","170+ วัน/ปี + Home Edition",true],["รูปแบบใหม่","สเกลใหม่ 21 ม.ค. 69",false],["ทราบผล","~4–6 วัน",false]],
-   fee:"<b>~6,xxx–7,xxx บาท</b> (จ่ายผ่าน ETS)", apps:"ทั่วโลกหลักล้านครั้ง/ปี", seats:"ไม่จำกัด (สอบได้ไม่จำกัดครั้ง)", prep:"4 ทักษะเหมือน IELTS · US มหาลัยท็อป 90-100+ · สเกลใหม่ 1-6 (ปี 69) · ผลอยู่ได้ 2 ปี · US มักนิยม TOEFL มากกว่า", link:"https://www.ets.org/toefl"},
+   fee:"<b>~6,xxx–7,xxx บาท</b> (จ่ายผ่าน ETS)", apps:"ทั่วโลกหลักล้านครั้ง/ปี", seats:"ไม่จำกัด (สอบได้ไม่จำกัดครั้ง)", prep:"4 ทักษะเหมือน IELTS · US มหาลัยท็อป 90-100+ · สเกลใหม่ 1-6 (ปี 69) · ผลอยู่ได้ 2 ปี · US มักนิยม TOEFL มากกว่า", books:"เตรียมสอบ TOEIC/TOEFL/IELTS/TU-GET/CU-TEP", booklink:"https://thinkbeyondbook.com/product/categories/141", link:"https://www.ets.org/toefl"},
   {name:"SAT / GRE", org:"College Board / ETS", cat:"inter", tag:"ต่างประเทศ",
    key:null, keyLabel:"หลายรอบ/ปี",
    dates:[["รอบสอบ","หลายรอบ/ปี จองผ่านเว็บ",false],["หมายเหตุ","เช็ค deadline มหาลัยปลายทาง",false]],
-   fee:"ตามอัตราผู้จัด (USD)", apps:"ทั่วโลกหลักล้านครั้ง/ปี", seats:"ไม่จำกัด", prep:"SAT = คณิต + อ่าน-เขียน (ยื่น ป.ตรี US) · GRE = Verbal + Quant + Writing (ยื่น ป.โท/เอก) · เช็กคะแนนขั้นต่ำแต่ละมหาลัย", link:"https://satsuite.collegeboard.org"},
+   fee:"ตามอัตราผู้จัด (USD)", apps:"ทั่วโลกหลักล้านครั้ง/ปี", seats:"ไม่จำกัด", prep:"SAT = คณิต + อ่าน-เขียน (ยื่น ป.ตรี US) · GRE = Verbal + Quant + Writing (ยื่น ป.โท/เอก) · เช็กคะแนนขั้นต่ำแต่ละมหาลัย", books:"TBX เตรียมสอบ GED — Best Seller สาย inter", booklink:"https://thinkbeyondbook.com/product/categories/141", link:"https://satsuite.collegeboard.org"},
   {name:"สอบ ก.พ. ภาค ก 2569", org:"สำนักงาน ก.พ. (Paper & Pencil)", cat:"gov", tag:"ราชการ",
    key:"2026-09-15", keyLabel:"ประกาศผล",
    dates:[["รับสมัคร","14 ม.ค.–3 ก.พ. 69 (ปิดแล้ว)",false],["สอบข้อเขียน","5 ก.ค. 69",false],["ประกาศผล","ภายใน 15 ก.ย. 69",true]],
-   fee:"<b>ค่าสมัคร ~330 บาท</b> · 450,000 ที่นั่ง 14 ศูนย์", apps:"ผู้สมัครหลายแสนคน/ปี", seats:"450,000 ที่นั่งสอบ · 14 ศูนย์", prep:"3 วิชา: ความสามารถทั่วไป (คณิต-เหตุผล) + ภาษาไทย + ภาษาอังกฤษ · บางระดับเพิ่มกฎหมาย · ต้องผ่านก่อนสมัคร ภาค ข ของกรมต่างๆ", link:"https://job3.ocsc.go.th"},
+   fee:"<b>ค่าสมัคร ~330 บาท</b> · 450,000 ที่นั่ง 14 ศูนย์", apps:"ผู้สมัครหลายแสนคน/ปี", seats:"450,000 ที่นั่งสอบ · 14 ศูนย์", prep:"3 วิชา: ความสามารถทั่วไป (คณิต-เหตุผล) + ภาษาไทย + ภาษาอังกฤษ · บางระดับเพิ่มกฎหมาย · ต้องผ่านก่อนสมัคร ภาค ข ของกรมต่างๆ", books:"คู่มือสอบ ก.พ. ภาค ก (ความสามารถทั่วไป/ไทย/อังกฤษ)", booklink:"https://thinkbeyondbook.com/product/categories/130", link:"https://job3.ocsc.go.th"},
   {name:"ก.พ. ภาค ก พิเศษ", org:"สำหรับผู้สอบผ่านส่วนราชการ", cat:"gov", tag:"ราชการ",
    key:null, keyLabel:"ตามรอบ",
    dates:[["รับสมัคร (รอบผ่าน)","19–25 พ.ค. 69",false],["เงื่อนไข","ผ่าน ภาค ข/ค ของส่วนราชการ",false]],
-   fee:"ตามประกาศ ก.พ.", apps:"เฉพาะผู้ผ่าน ภาค ข/ค ของกรม", seats:"ตามจำนวนผู้มีสิทธิ", prep:"สำหรับคนที่สอบผ่าน ภาค ข/ค ของส่วนราชการแล้ว แต่ยังไม่มีหนังสือรับรอง ภาค ก · เนื้อหาเหมือน ภาค ก ปกติ", link:"https://www.ocsc.go.th"},
+   fee:"ตามประกาศ ก.พ.", apps:"เฉพาะผู้ผ่าน ภาค ข/ค ของกรม", seats:"ตามจำนวนผู้มีสิทธิ", prep:"สำหรับคนที่สอบผ่าน ภาค ข/ค ของส่วนราชการแล้ว แต่ยังไม่มีหนังสือรับรอง ภาค ก · เนื้อหาเหมือน ภาค ก ปกติ", books:"คู่มือสอบ ก.พ. — ทบทวน ภาค ก", booklink:"https://thinkbeyondbook.com/product/categories/130", link:"https://www.ocsc.go.th"},
   {name:"สอบ กทม. (ข้าราชการ กทม.)", org:"สำนักงาน ก.ก.", cat:"gov", tag:"ราชการ",
    key:null, keyLabel:"ตามรอบ",
    dates:[["ครั้งที่ 1/2569","ประกาศ 2 เม.ย. 69",false],["เงื่อนไข","ผ่าน ภาค ก กทม./ก.พ.",false]],
-   fee:"ตามประกาศ", apps:"แล้วแต่รอบ/ตำแหน่ง", seats:"ตามอัตราว่างของ กทม. แต่ละครั้ง", prep:"ต้องมีหนังสือรับรอง ภาค ก (กทม. หรือ ก.พ.) ก่อน · จากนั้นสอบ ภาค ข ความรู้เฉพาะตำแหน่ง + ภาค ค สัมภาษณ์", link:"https://webportal.bangkok.go.th"},
+   fee:"ตามประกาศ", apps:"แล้วแต่รอบ/ตำแหน่ง", seats:"ตามอัตราว่างของ กทม. แต่ละครั้ง", prep:"ต้องมีหนังสือรับรอง ภาค ก (กทม. หรือ ก.พ.) ก่อน · จากนั้นสอบ ภาค ข ความรู้เฉพาะตำแหน่ง + ภาค ค สัมภาษณ์", books:"คู่มือสอบข้าราชการ/พนักงานส่วนท้องถิ่น", booklink:"https://thinkbeyondbook.com/product/categories/131", link:"https://webportal.bangkok.go.th"},
 
   {name:"ใบประกอบวิชาชีพพยาบาล", org:"สภาการพยาบาล (สอบความรู้ 8 วิชา)", cat:"prof", tag:"วิชาชีพ",
    key:"2026-11-07", keyLabel:"สอบรอบ 3/69",
@@ -255,12 +262,12 @@ const exams = [
   {name:"ผู้สอบบัญชีรับอนุญาต (CPA)", org:"สภาวิชาชีพบัญชี", cat:"prof", tag:"วิชาชีพ",
    key:null, keyLabel:"หลายรอบ/ปี",
    dates:[["ครั้งที่ 62 (1/69)","สอบ มี.ค. 69",false],["ครั้งที่ 63 (2/69)","กำลังดำเนินการ",true],["รูปแบบ","สอบรายวิชา สะสมได้",false]],
-   fee:"ตามรายวิชาที่สมัคร", apps:"ผู้สมัครหลักพันคน/รอบ", seats:"ไม่จำกัด (ผ่านทุกวิชา = ได้ใบ)", prep:"สอบรายวิชา สะสมได้: บัญชีขั้นต้น-กลาง-สูง, ต้นทุน, สอบบัญชี, ภาษีอากร, กฎหมายธุรกิจ · ต้องฝึกงานสอบบัญชีตามเกณฑ์", link:"https://www.tfac.or.th"},
+   fee:"ตามรายวิชาที่สมัคร", apps:"ผู้สมัครหลักพันคน/รอบ", seats:"ไม่จำกัด (ผ่านทุกวิชา = ได้ใบ)", prep:"สอบรายวิชา สะสมได้: บัญชีขั้นต้น-กลาง-สูง, ต้นทุน, สอบบัญชี, ภาษีอากร, กฎหมายธุรกิจ · ต้องฝึกงานสอบบัญชีตามเกณฑ์", books:"หนังสือบริหารธุรกิจ/บัญชี/ภาษี", booklink:"https://thinkbeyondbook.com/product/categories/13", link:"https://www.tfac.or.th"},
 
   {name:"ใบอนุญาตทนายความ", org:"สภาทนายความฯ (ตั๋วทนาย)", cat:"prof", tag:"วิชาชีพ",
    key:null, keyLabel:"ภาคทฤษฎี/ปฏิบัติ",
    dates:[["รูปแบบ","ภาคทฤษฎี + ภาคปฏิบัติ + ตั๋วปี",false],["รอบสอบ","ติดตามประกาศสำนักฝึกอบรม",false]],
-   fee:"ตามประกาศสภาทนายความ", apps:"ผู้สมัครหลักพัน-หมื่นคน/รุ่น", seats:"ไม่จำกัด (ผ่านเกณฑ์ = ได้ตั๋ว)", prep:"ต้องจบนิติศาสตร์ + ผ่านภาคทฤษฎี (กฎหมายวิธีพิจารณา/พยาน/ว่าความ) และภาคปฏิบัติ (ฝึกงาน 6 เดือน) จึงได้ตั๋วทนาย", link:"https://www.lawyerscouncil.or.th"},
+   fee:"ตามประกาศสภาทนายความ", apps:"ผู้สมัครหลักพัน-หมื่นคน/รุ่น", seats:"ไม่จำกัด (ผ่านเกณฑ์ = ได้ตั๋ว)", prep:"ต้องจบนิติศาสตร์ + ผ่านภาคทฤษฎี (กฎหมายวิธีพิจารณา/พยาน/ว่าความ) และภาคปฏิบัติ (ฝึกงาน 6 เดือน) จึงได้ตั๋วทนาย", books:"หนังสือกฎหมายและภาษี — ปูพื้นตั๋วทนาย", booklink:"https://thinkbeyondbook.com/product/categories/44", link:"https://www.lawyerscouncil.or.th"},
 
   {name:"ใบประกอบวิชาชีพวิศวกรรม (กว.)", org:"สภาวิศวกร", cat:"prof", tag:"วิชาชีพ",
    key:null, keyLabel:"หลายรอบ/ปี",
@@ -275,7 +282,7 @@ const exams = [
   {name:"ใบอนุญาตประกอบวิชาชีพครู", org:"คุรุสภา (ระบบอิเล็กทรอนิกส์)", cat:"prof", tag:"วิชาชีพ",
    key:null, keyLabel:"หลายรอบ/ปี",
    dates:[["ครั้งที่ 1/69","สอบ 15–17 พ.ค. 69 (26 สนามสอบ)",false],["เกณฑ์ผ่าน","60% · มาตรฐานวิชาชีพ 5 ด้าน",false],["รูปแบบ","ใบเดียว (ยกเลิก 3 ระดับ)",true]],
-   fee:"ตามประกาศคุรุสภา", apps:"ผู้เข้าสอบหลักพัน-หมื่นคน/รอบ", seats:"ไม่จำกัด (ผ่าน 60% = ได้ใบ)", prep:"สอบมาตรฐานวิชาชีพครู 5 ด้าน + วิชาเอก · เกณฑ์ผ่าน 60% · ต้องมีวุฒิทางการศึกษาที่คุรุสภารับรอง (เข้าเรียนปี 2562+)", link:"https://www.ksp.or.th"},
+   fee:"ตามประกาศคุรุสภา", apps:"ผู้เข้าสอบหลักพัน-หมื่นคน/รอบ", seats:"ไม่จำกัด (ผ่าน 60% = ได้ใบ)", prep:"สอบมาตรฐานวิชาชีพครู 5 ด้าน + วิชาเอก · เกณฑ์ผ่าน 60% · ต้องมีวุฒิทางการศึกษาที่คุรุสภารับรอง (เข้าเรียนปี 2562+)", books:"คู่มือสอบครูผู้ช่วย + มาตรฐานวิชาชีพครู", booklink:"https://thinkbeyondbook.com/product/categories/129", link:"https://www.ksp.or.th"},
 
   {name:"ใบประกอบวิชาชีพเวชกรรม (แพทย์)", org:"ศรว. (แพทยสภา) — 3 ขั้นตอน", cat:"prof", tag:"วิชาชีพ",
    key:null, keyLabel:"ตามรอบ",
@@ -301,32 +308,32 @@ const exams = [
   {name:"Communication & Public Speaking", org:"ทักษะสื่อสาร/พูดในที่สาธารณะ", cat:"soft", tag:"Soft Skill",
    key:null, keyLabel:"เรียนได้ตลอด",
    dates:[["ทำไมยอดนิยม","อันดับต้นที่ผู้จ้างมองหาทุกสายงาน",true],["เรียนที่ไหน","Coursera · VirtualSpeech · YouTube",false]],
-   fee:"มีคอร์สฟรี–เสียเงิน", prep:"ฝึกฟังเชิงรุก + พูดต่อหน้าคน + เขียนสื่อสารชัด · ไม่มีสอบวัดผลตายตัว เน้นฝึกจริง + ขอ feedback", link:"https://www.coursera.org/courses?query=communication"},
+   fee:"มีคอร์สฟรี–เสียเงิน", prep:"ฝึกฟังเชิงรุก + พูดต่อหน้าคน + เขียนสื่อสารชัด · ไม่มีสอบวัดผลตายตัว เน้นฝึกจริง + ขอ feedback", books:"หมวดพัฒนาการสื่อสาร", booklink:"https://thinkbeyondbook.com/product/categories/166", link:"https://www.coursera.org/courses?query=communication"},
 
   {name:"Emotional Intelligence (EQ)", org:"ความฉลาดทางอารมณ์ · เห็นอกเห็นใจ", cat:"soft", tag:"Soft Skill",
    key:null, keyLabel:"เรียนได้ตลอด",
    dates:[["ทำไมยอดนิยม","ทักษะที่ AI แทนไม่ได้",true],["เรียนที่ไหน","Coursera · TalentLMS",false]],
-   fee:"มีคอร์สฟรี–เสียเงิน", prep:"รู้จักอารมณ์ตัวเอง + เห็นอกเห็นใจผู้อื่น + จัดการความขัดแย้ง · เรียนทฤษฎีแล้วต้องฝึกในสถานการณ์จริง", link:"https://www.coursera.org/courses?query=emotional+intelligence"},
+   fee:"มีคอร์สฟรี–เสียเงิน", prep:"รู้จักอารมณ์ตัวเอง + เห็นอกเห็นใจผู้อื่น + จัดการความขัดแย้ง · เรียนทฤษฎีแล้วต้องฝึกในสถานการณ์จริง", books:"หมวดพัฒนาจิตใจ/จิตวิทยาพัฒนาตนเอง", booklink:"https://thinkbeyondbook.com/product/categories/168", link:"https://www.coursera.org/courses?query=emotional+intelligence"},
 
   {name:"Adaptability & Resilience", org:"ปรับตัว/ยืดหยุ่นในยุค AI", cat:"soft", tag:"Soft Skill",
    key:null, keyLabel:"เรียนได้ตลอด",
    dates:[["ทำไมยอดนิยม","ติดอันดับทักษะโตเร็ว WEF 2025",true],["เรียนที่ไหน","Coursera · LinkedIn Learning",false]],
-   fee:"มีคอร์สฟรี–เสียเงิน", prep:"ยืดหยุ่นรับการเปลี่ยนแปลง + ล้มแล้วลุกไว + เรียนรู้สิ่งใหม่เร็ว · ฝึกโดยรับงานนอก comfort zone", link:"https://www.coursera.org/courses?query=adaptability"},
+   fee:"มีคอร์สฟรี–เสียเงิน", prep:"ยืดหยุ่นรับการเปลี่ยนแปลง + ล้มแล้วลุกไว + เรียนรู้สิ่งใหม่เร็ว · ฝึกโดยรับงานนอก comfort zone", books:"หมวดจิตวิทยาพัฒนาตนเอง", booklink:"https://thinkbeyondbook.com/product/categories/8", link:"https://www.coursera.org/courses?query=adaptability"},
 
   {name:"Leadership & Influence", org:"ภาวะผู้นำ · โน้มน้าวทีม", cat:"soft", tag:"Soft Skill",
    key:null, keyLabel:"เรียนได้ตลอด",
    dates:[["ทำไมยอดนิยม","7 ใน 10 ทักษะโตเร็วเป็น soft skill",true],["เรียนที่ไหน","Coursera · Deel · edX",false]],
-   fee:"มีคอร์สฟรี–เสียเงิน", prep:"นำทีม + โน้มน้าว + มอบหมายงาน + ตัดสินใจ · เรียนคู่กับการลงมือทำจริงในโปรเจกต์/อาสาสมัคร", link:"https://www.coursera.org/courses?query=leadership"},
+   fee:"มีคอร์สฟรี–เสียเงิน", prep:"นำทีม + โน้มน้าว + มอบหมายงาน + ตัดสินใจ · เรียนคู่กับการลงมือทำจริงในโปรเจกต์/อาสาสมัคร", books:"หมวดพัฒนาการทำงาน", booklink:"https://thinkbeyondbook.com/product/categories/160", link:"https://www.coursera.org/courses?query=leadership"},
 
   {name:"Critical Thinking & Problem-Solving", org:"คิดวิเคราะห์ · แก้ปัญหาเชิงสร้างสรรค์", cat:"soft", tag:"Soft Skill",
    key:null, keyLabel:"เรียนได้ตลอด",
    dates:[["ทำไมยอดนิยม","Creative thinking อันดับ 4 ของโลก",true],["เรียนที่ไหน","Coursera · edX",false]],
-   fee:"มีคอร์สฟรี–เสียเงิน", prep:"วิเคราะห์ข้อมูล + แยกแยะเหตุผล + คิดทางแก้สร้างสรรค์ · ฝึกด้วยเคสจริงและตั้งคำถามเสมอ", link:"https://www.coursera.org/courses?query=critical+thinking"},
+   fee:"มีคอร์สฟรี–เสียเงิน", prep:"วิเคราะห์ข้อมูล + แยกแยะเหตุผล + คิดทางแก้สร้างสรรค์ · ฝึกด้วยเคสจริงและตั้งคำถามเสมอ", books:"หมวดพัฒนาความคิด", booklink:"https://thinkbeyondbook.com/product/categories/167", link:"https://www.coursera.org/courses?query=critical+thinking"},
 
   {name:"Time Management & Organization", org:"บริหารเวลา · จัดลำดับความสำคัญ", cat:"soft", tag:"Soft Skill",
    key:null, keyLabel:"เรียนได้ตลอด",
    dates:[["ทำไมยอดนิยม","เพิ่ม productivity ทุกสายงาน",true],["เรียนที่ไหน","Coursera · YouTube",false]],
-   fee:"มีคอร์สฟรี–เสียเงิน", prep:"จัดลำดับความสำคัญ + วางแผน + โฟกัส · ใช้เครื่องมือ (ปฏิทิน/to-do) + วัดผลว่าทำได้จริงไหม", link:"https://www.coursera.org/courses?query=time+management"},
+   fee:"มีคอร์สฟรี–เสียเงิน", prep:"จัดลำดับความสำคัญ + วางแผน + โฟกัส · ใช้เครื่องมือ (ปฏิทิน/to-do) + วัดผลว่าทำได้จริงไหม", books:"หมวดพัฒนาการทำงาน", booklink:"https://thinkbeyondbook.com/product/categories/160", link:"https://www.coursera.org/courses?query=time+management"},
 
   // ===== มหาวิทยาลัยในไทย: เกณฑ์ยื่นคะแนน =====
   {name:"จุฬาลงกรณ์มหาวิทยาลัย", org:"รอบ 3 Admission · สมัครผ่าน mytcas", cat:"uni", tag:"มหาวิทยาลัย",
@@ -424,6 +431,7 @@ function cardHTML(e){
     cdPill(e)+'<div class="dates">'+d+'</div>'+
     (e.apps?'<div class="statrow"><div class="statbox apps"><span class="sh">👥 ผู้สมัคร/เข้าสอบ (เฉลี่ย)</span><span class="sv">'+e.apps+'</span></div><div class="statbox seats"><span class="sh">🎯 จำนวนรับ/ที่นั่ง</span><span class="sv">'+e.seats+'</span></div></div>':'')+
     (e.prep?'<div class="prep"><span class="ph">📌 สิ่งที่ต้องใช้/ต้องรู้</span>'+e.prep+'</div>':'')+
+    (e.books?'<div class="books"><span class="bh">📚 หนังสือแนะนำ (ThinkBeyond)</span>'+e.books+' <a href="'+e.booklink+'" target="_blank">ดูหมวด →</a></div>':'')+
     '<div class="fee">💰 '+e.fee+'</div>'+
     '<a class="link" href="'+e.link+'" target="_blank">เว็บทางการ →</a>';
   return c;
