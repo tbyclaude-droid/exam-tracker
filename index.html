@@ -77,6 +77,15 @@
   .popval{font-size:.74rem;font-weight:700;font-family:'Space Grotesk';width:32px;text-align:right;color:var(--muted);flex-shrink:0}
   @media(max-width:560px){.poprow .plabel{width:120px;font-size:.72rem}.popwrap{padding:16px 15px}}
 
+  /* NEWS FEED */
+  .newswrap{margin:16px 0;padding:15px 20px 9px;position:relative;overflow:hidden;border:1.5px solid rgba(255,140,180,.55)}
+  .newswrap h3{font-size:.98rem;font-weight:800;display:flex;align-items:center;gap:8px;margin-bottom:6px}
+  .newswrap h3 .live{font-size:.58rem;font-weight:800;color:#fff;background:linear-gradient(120deg,#ff5c9d,#ff8f4d);padding:3px 10px;border-radius:20px;letter-spacing:.08em;animation:pulse 1.8s infinite}
+  .newsitem{display:flex;gap:12px;align-items:flex-start;padding:10px 2px;border-top:1px solid rgba(168,85,255,.13);cursor:pointer;transition:transform .15s,color .15s}
+  .newsitem:hover{transform:translateX(3px);color:var(--grad2)}
+  .newsitem .nt{flex:1;font-size:.85rem;font-weight:600;line-height:1.45}
+  .newsitem .nd{font-size:.68rem;color:var(--muted);white-space:nowrap;font-family:'Space Grotesk';flex-shrink:0;margin-top:2px}
+
   /* FILTERS */
   .filters{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0 18px}
   .chip{background:rgba(255,255,255,.6);backdrop-filter:blur(8px);
@@ -177,6 +186,8 @@
   <span class="stamp">🗓️ อัปเดต 17 ก.ค. 2569 · แจ้งเตือนรายสัปดาห์</span>
 </div>
 
+<div class="glass newswrap" id="newsfeed"></div>
+
 <div class="bento">
   <div class="glass spotlight">
     <div class="lbl">⏳ เดดไลน์ใกล้ที่สุด</div>
@@ -264,24 +275,24 @@ const exams = [
    books:"เตรียมสอบเข้า ม.4 ห้อง Gifted/ร.ร.ชั้นนำ", booklink:"https://thinkbeyondbook.com/product/5830", link:"https://www.triamudom.ac.th"},
 
   {name:"มหิดลวิทยานุสรณ์ (MWIT) — ม.4", org:"ร.ร.วิทยาศาสตร์ชั้นนำ · สอบร่วม วมว./จภ.", cat:"school", tag:"โรงเรียน", isNew:true,
-   key:"2026-11-15", keyLabel:"สอบรอบแรก (คาดการณ์)",
-   dates:[["รับสมัคร (คาดการณ์)","ราว ส.ค. 69 (อ้างอิงปีก่อน)",true],["สอบรอบแรก (คาดการณ์)","ราวกลาง พ.ย. 69 (คณิต+วิทย์)",false],["สอบรอบสอง (คาดการณ์)","ราวกลาง ม.ค. 70",false]],
-   apps:"ผู้สมัครหลักหมื่นคน/ปี (แข่งสูงมาก)", seats:"รับ 240 คน (ผ่านรอบแรก ~600 เข้ารอบสอง)",
+   key:"2026-11-15", keyLabel:"สอบรอบแรก 15 พ.ย. 69",
+   dates:[["รับสมัคร","1–31 ส.ค. 69",true],["สอบรอบแรก","15 พ.ย. 69 (คณิต+วิทย์)",false],["ประกาศผลรอบแรก","ภายใน 15 ธ.ค. 69",false],["สอบรอบสอง","16 ม.ค. 70",false]],
+   apps:"ผู้สมัครหลักหมื่นคน/ปี (แข่งสูงมาก)", seats:"รับรอบแรก 500 → คัดเหลือ 240 คน",
    prep:"รอบแรกใช้ข้อสอบชุดเดียวกับ วมว. และจุฬาภรณ์ฯ · เกณฑ์ GPA คณิต-วิทย์ ≥ 3.00 (ม.1–2) · สอบคณิต + วิทยาศาสตร์ เน้น scientific literacy · เรียนฟรี+ประจำ · ค่าสมัคร ~200 บ. · สมัคร apply.mwit.ac.th",
    fee:"ค่าสมัคร ~200 บ. · เรียนฟรี+ประจำ",
    books:"เตรียมสอบเข้า ม.4 ห้อง Gifted/วิทย์", booklink:"https://thinkbeyondbook.com/product/5830", link:"https://apply.mwit.ac.th"},
 
   {name:"จุฬาภรณราชวิทยาลัย (จภ. 12 แห่ง) — ม.1 & ม.4", org:"กลุ่ม ร.ร.วิทยาศาสตร์ภูมิภาค (PCSHS)", cat:"school", tag:"โรงเรียน", isNew:true,
-   key:"2026-11-15", keyLabel:"สอบรอบแรก (คาดการณ์)",
-   dates:[["รับสมัคร (คาดการณ์)","ราว ส.ค. 69 (อ้างอิงปีก่อน)",true],["สอบรอบแรก (คาดการณ์)","ราวกลาง พ.ย. 69 (คณิต+วิทย์)",false],["ครอบคลุม","ม.1 และ ม.4 · 12 จังหวัดทั่วประเทศ",false]],
+   key:"2026-11-15", keyLabel:"สอบรอบแรก 15 พ.ย. 69",
+   dates:[["รับสมัคร","ราว ส.ค. 69 (พร้อม MWIT/วมว.)",true],["สอบรอบแรก ม.4","15 พ.ย. 69 (ข้อสอบร่วม)",false],["ครอบคลุม","ม.1 และ ม.4 · 12 จังหวัดทั่วประเทศ",false]],
    apps:"แข่งขันสูงทั่วภูมิภาค", seats:"แต่ละแห่งรับ ม.1 & ม.4 ตามโควตา (ประจำ+ทุน)",
    prep:"12 โรงเรียนทั่วประเทศ · ม.4 สอบร่วมข้อสอบชุดเดียวกับ MWIT/วมว. · สมัครผ่าน apply.pcshs.ac.th · เน้นวิทย์-คณิตเชิงลึก · เรียนประจำ+ได้รับการสนับสนุน · เลือกศูนย์สอบตามภูมิภาค",
    fee:"ค่าสมัครตามประกาศ · เรียนประจำ",
    books:"เตรียมสอบเข้า ม.1 ห้อง Gifted/วิทย์", booklink:"https://thinkbeyondbook.com/product/5829", link:"https://apply.pcshs.ac.th"},
 
   {name:"โครงการ วมว. — ห้องเรียนวิทยาศาสตร์ ม.4", org:"อว. ร่วมกับมหาวิทยาลัย 20+ ศูนย์", cat:"school", tag:"โรงเรียน", isNew:true,
-   key:"2026-11-15", keyLabel:"สอบรอบแรก (คาดการณ์)",
-   dates:[["รับสมัคร (คาดการณ์)","ราว ส.ค. 69 (อ้างอิงปีก่อน)",true],["สอบรอบแรก (คาดการณ์)","ราวกลาง พ.ย. 69 (ข้อสอบร่วม)",false],["ประกาศ/รอบสอง","ราว ธ.ค. 69–ม.ค. 70",false]],
+   key:"2026-11-15", keyLabel:"สอบรอบแรก 15 พ.ย. 69",
+   dates:[["รับสมัคร","ราว ส.ค. 69",true],["สอบรอบแรก","15 พ.ย. 69 (ข้อสอบร่วม MWIT)",false],["ประกาศ/รอบสอง","ธ.ค. 69 – ม.ค. 70",false]],
    apps:"ผู้สมัครหลายพันคน/ปี", seats:"แต่ละคู่ศูนย์ ม.–ร.ร. รับ ~30 คน",
    prep:"ห้องเรียนวิทยาศาสตร์ในกำกับมหาวิทยาลัย (มช./มข./มอ./มก. ฯลฯ) · รอบแรกใช้ข้อสอบร่วมกับ MWIT · สมัครผ่าน scius.mhesi.go.th · เรียนประจำ+ทุน · เหมาะสายวิทย์-วิจัย",
    fee:"ค่าสมัครตามประกาศ · มีทุนสนับสนุน",
@@ -508,9 +519,9 @@ const exams = [
    fee:"ค่าสมัครตามประกาศ (หลักร้อย)",
    books:"คู่มือสอบรัฐวิสาหกิจ/พนักงานราชการ", booklink:"https://thinkbeyondbook.com/product/categories/67", link:"https://www.egat.co.th"},
 
-  {name:"แบงก์รัฐ & ขนส่ง (ธ.ก.ส./ออมสิน/กรุงไทย/รฟท.)", org:"ธนาคารรัฐ · สาธารณูปโภค", cat:"soe", tag:"รัฐวิสาหกิจ",
+  {name:"แบงก์รัฐ & ขนส่ง (ธ.ก.ส./ออมสิน/กรุงไทย/รฟท.)", org:"ธนาคารรัฐ · สาธารณูปโภค", cat:"soe", tag:"รัฐวิสาหกิจ", isNew:true,
    key:null, keyLabel:"รับสมัครเป็นรอบทั้งปี",
-   dates:[["ธนาคารรัฐ","ธ.ก.ส. · ออมสิน · กรุงไทย · SME",true],["ขนส่ง/สาธารณูปโภค","รฟท. · ทางด่วน (EXAT) · การประปา",false],["วุฒิที่รับ","ปวส.–ป.ตรี (บัญชี/ธุรกิจ/ทั่วไป)",false]],
+   dates:[["🆕 กำลังเปิด (ก.ค. 69)","ธนาคารออมสิน รับ ม.3–ป.ตรี หลายตำแหน่ง",true],["ธนาคารรัฐอื่น","ธ.ก.ส. · กรุงไทย · SME (เปิดเป็นรอบ)",false],["ขนส่ง/สาธารณูปโภค","รฟท. · ทางด่วน (EXAT) · การประปา",false]],
    apps:"ผู้สมัครหลักหมื่นคน/รอบ", seats:"ตามอัตราแต่ละองค์กร",
    prep:"แบงก์รัฐเปิดสอบบ่อย (นิติกร บัญชี การเงิน พนักงานปฏิบัติการ) · เน้นความรู้เฉพาะตำแหน่ง + คณิต-เหตุผล + ภาษาอังกฤษ + ความรู้เศรษฐกิจ · ตลาดผู้ใหญ่วัยทำงาน กำลังซื้อสูง",
    fee:"ค่าสมัครตามประกาศ",
@@ -682,6 +693,14 @@ const exams = [
    key:"2026-07-16", keyLabel:"ปิดรับสมัคร",
    dates:[["รับสมัคร","26 มิ.ย.–16 ก.ค. 69",true],["เงื่อนไข","15 อัตรา",false]],
    apps:"แล้วแต่รอบ", seats:"15 อัตรา (รอบนี้)", prep:"ต้องผ่าน ภาค ก ก.พ. + วุฒิ ป.ตรีตามตำแหน่ง (นักสื่อสาร/นักประชาสัมพันธ์ ฯลฯ) · สอบ ภาค ข ความรู้เฉพาะ + ภาค ค สัมภาษณ์", fee:"ตามประกาศ", books:"คู่มือสอบเข้ารับราชการ (อื่นๆ)", booklink:"https://thinkbeyondbook.com/product/categories/132", link:"https://www.prd.go.th"},
+
+  {name:"กรมคุมประพฤติ — รับสมัครพนักงานราชการ", org:"กระทรวงยุติธรรม · ไม่ต้องผ่าน ภาค ก", cat:"gov", tag:"ราชการ", isNew:true,
+   key:"2026-08-13", keyLabel:"ปิดรับสมัคร",
+   dates:[["รับสมัคร","20 ก.ค.–13 ส.ค. 69",true],["วุฒิ","ปวช./ปวส./ป.ตรี หลายสาขา",false],["เงื่อนไข","ไม่ต้องผ่าน ภาค ก · เงินเดือน 18,150",false]],
+   apps:"แล้วแต่รอบ (เปิดกว้าง)", seats:"หลายอัตรา (ตามประกาศ)",
+   prep:"ไม่ต้องผ่าน ภาค ก ก.พ. · สอบความรู้ความสามารถเฉพาะตำแหน่ง + สัมภาษณ์ · วุฒิ ปวช.–ป.ตรี เงินเดือนเริ่ม 18,150 · เหมาะคนอยากเริ่มงานราชการสายยุติธรรมโดยไม่ต้องมี ภาค ก",
+   fee:"ตามประกาศกรมคุมประพฤติ",
+   books:"คู่มือสอบเข้ารับราชการ (อื่นๆ)", booklink:"https://thinkbeyondbook.com/product/categories/132", link:"https://www.probation.go.th"},
 
   {name:"TGAT / TPAT (2–5)", org:"ทปอ. — TCAS69", cat:"th", tag:"สอบในไทย",
    key:"2025-12-13", keyLabel:"สอบ",
@@ -1002,9 +1021,28 @@ function renderPop(){
   setTimeout(()=>{el.querySelectorAll('.popbar').forEach(b=>{b.style.width=b.dataset.w+'%';});},120);
 }
 
+// ===== ข่าวใหม่ล่าสุด (แถบไฮไลต์หน้าแรก) =====
+const newsData=[
+  {t:"MWIT / จุฬาภรณ์ / วมว. ม.4 ปี 2570 ประกาศแล้ว — สมัคร 1–31 ส.ค. 69 · สอบรอบแรก 15 พ.ย. 69",cat:"school",d:"17 ก.ค. 69"},
+  {t:"🆕 กรมคุมประพฤติ เปิดรับ 20 ก.ค.–13 ส.ค. 69 (ไม่ต้องผ่าน ภาค ก · เงินเดือน 18,150)",cat:"gov",d:"17 ก.ค. 69"},
+  {t:"🏦 ธนาคารออมสิน กำลังรับสมัครพนักงาน ปี 69 (วุฒิ ม.3–ป.ตรี หลายตำแหน่ง)",cat:"soe",d:"17 ก.ค. 69"},
+];
+function renderNews(){
+  const el=document.getElementById('newsfeed');
+  if(!newsData.length){el.style.display='none';return;}
+  el.innerHTML='<h3>📢 ข่าวใหม่ล่าสุด <span class="live">LIVE</span></h3>'+
+   newsData.map(n=>'<div class="newsitem" data-cat="'+n.cat+'"><span class="nt">'+n.t+'</span><span class="nd">'+n.d+'</span></div>').join('');
+  el.querySelectorAll('.newsitem').forEach(r=>r.addEventListener('click',()=>{
+    const c=r.dataset.cat,chip=document.querySelector('.chip[data-f="'+c+'"]');
+    if(chip){document.querySelectorAll('.chip').forEach(x=>x.classList.remove('active'));chip.classList.add('active');render(c);
+      document.getElementById('cardArea').scrollIntoView({behavior:'smooth',block:'start'});}
+  }));
+}
+
 renderSpotlight();
 renderStats();
 renderPop();
+renderNews();
 render('all');
 </script>
 </body>
