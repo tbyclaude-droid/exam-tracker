@@ -193,6 +193,65 @@
     font-size:.8rem;color:#9a6b1a;margin-top:20px;border:1.5px solid rgba(255,224,163,.8)}
   footer{margin-top:22px;padding:16px 4px;font-size:.78rem;color:var(--muted);text-align:center}
   footer b{color:var(--ink)}
+
+  /* ===== ปฏิทินการผลิต (แถบแยก prod) — ทุกคลาส prefix pc- กันชนกับเว็บหลัก ===== */
+  .pc-wrap{--pc-buy:#ffcf5c;--pc-buy2:#ffb838;--pc-line:rgba(120,90,180,.16)}
+  .pc-key{background:linear-gradient(120deg,rgba(168,85,255,.14),rgba(91,141,255,.12));border:1px solid rgba(168,85,255,.28);border-radius:20px;padding:18px 20px;margin-bottom:8px}
+  .pc-key .pc-big{font-size:16px;font-weight:700;line-height:1.5;color:#3a2560}
+  .pc-key b{color:#7a3fd0}
+  .pc-pushes{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:12px;margin-top:14px}
+  .pc-push{background:rgba(255,255,255,.8);border:1px solid var(--pc-line);border-radius:14px;padding:13px 14px}
+  .pc-push h4{font-size:14px;margin:6px 0}
+  .pc-push .pc-flow{font-size:12.5px;color:#5a4b82;line-height:1.5}
+  .pc-push .pc-flow em{font-style:normal;font-weight:700;color:#c23a6b}
+  .pc-push .pc-tag{display:inline-block;font-size:11px;font-weight:700;padding:2px 9px;border-radius:20px}
+  .pc-sect{font-size:14px;font-weight:800;color:#7a3fd0;margin:22px 0 12px;display:flex;align-items:center;gap:8px}
+  .pc-daylegend{font-size:12.5px;color:#5a4b82;margin:-6px 0 12px;line-height:1.6}
+  .pc-nowgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:11px}
+  .pc-nowc{background:rgba(255,255,255,.82);border:1px solid var(--pc-line);border-radius:14px;padding:13px 14px;border-left:5px solid #ccc}
+  .pc-nowc .pc-cat{font-weight:700;font-size:14px}
+  .pc-nowc .pc-s2{font-size:12.5px;margin-top:4px;font-weight:700}
+  .pc-nowc .pc-meta{font-size:12px;color:#7c6fa6;margin-top:6px;line-height:1.55}
+  .pc-badge{display:inline-block;font-size:11px;font-weight:700;padding:2px 8px;border-radius:12px;color:#fff}
+  .pc-tlwrap{overflow-x:auto;background:rgba(255,255,255,.82);border:1px solid var(--pc-line);border-radius:16px;padding:13px}
+  table.pc-tl{border-collapse:collapse;width:100%;min-width:820px}
+  table.pc-tl th,table.pc-tl td{text-align:center;font-size:12px;padding:0}
+  table.pc-tl thead th{color:#7c6fa6;font-weight:600;padding:6px 2px}
+  table.pc-tl thead th.pc-q{color:#a855ff;font-weight:800}
+  .pc-rowlbl{text-align:left!important;font-weight:600;font-size:12px;padding:4px 10px 4px 4px!important;white-space:nowrap;position:sticky;left:0;background:linear-gradient(90deg,#fff 82%,transparent);z-index:2}
+  .pc-c{height:33px;border:1px solid rgba(120,90,180,.08);position:relative;min-width:52px}
+  .pc-c.pc-buy{background:linear-gradient(180deg,var(--pc-buy),var(--pc-buy2))}
+  .pc-c.pc-prod{background:repeating-linear-gradient(45deg,rgba(143,184,255,.55),rgba(143,184,255,.55) 6px,rgba(143,184,255,.28) 6px,rgba(143,184,255,.28) 12px)}
+  .pc-c.pc-buy.pc-prod{background:linear-gradient(180deg,var(--pc-buy),var(--pc-buy2))}
+  .pc-c.pc-now{outline:2.5px solid #a855ff;outline-offset:-2px;z-index:1}
+  .pc-c .pc-dot{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:14px;line-height:1}
+  .pc-legend{display:flex;flex-wrap:wrap;gap:13px;margin-top:12px;font-size:12px;color:#5a4b82;align-items:center}
+  .pc-legend span{display:inline-flex;align-items:center;gap:6px}
+  .pc-sw{width:20px;height:13px;border-radius:4px;display:inline-block}
+  .pc-sw.pc-b{background:linear-gradient(180deg,var(--pc-buy),var(--pc-buy2))}
+  .pc-sw.pc-p{background:repeating-linear-gradient(45deg,rgba(143,184,255,.6),rgba(143,184,255,.6) 5px,rgba(143,184,255,.3) 5px,rgba(143,184,255,.3) 10px)}
+  .pc-cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:14px}
+  .pc-cc{background:rgba(255,255,255,.82);border:1px solid var(--pc-line);border-radius:16px;padding:15px 16px;border-top:5px solid #ccc;box-shadow:0 6px 18px rgba(120,90,180,.07)}
+  .pc-cc h4{font-size:15px;display:flex;align-items:center;gap:7px;flex-wrap:wrap;margin:0}
+  .pc-pills{margin:9px 0 3px;display:flex;gap:6px;flex-wrap:wrap}
+  .pc-pl{font-size:11px;font-weight:700;padding:2px 9px;border-radius:20px;background:#f0ebff;color:#7a3fd0}
+  .pc-pl.pc-m{background:#fff0f6;color:#c23a6b}
+  .pc-pl.pc-o{background:#e6fbf6;color:#12a58c}
+  .pc-rl{display:flex;gap:8px;font-size:12.5px;margin-top:8px;line-height:1.4}
+  .pc-rl .pc-k{color:#8478a8;min-width:92px;font-size:11.5px;padding-top:1px}
+  .pc-rl .pc-v{font-weight:700}
+  .pc-nt{font-size:12px;color:#5a4b82;margin-top:10px;line-height:1.55;border-top:1px dashed var(--pc-line);padding-top:9px}
+  .pc-rank{background:rgba(255,255,255,.82);border:1px solid var(--pc-line);border-radius:16px;overflow:hidden}
+  .pc-rr{display:grid;grid-template-columns:40px 1fr auto;gap:11px;align-items:center;padding:12px 15px;border-bottom:1px solid var(--pc-line)}
+  .pc-rr:last-child{border-bottom:none}
+  .pc-rr .pc-no{font-weight:800;font-size:19px;color:#a855ff;text-align:center}
+  .pc-rr .pc-tt{font-weight:700;font-size:14px}
+  .pc-rr .pc-rs{font-size:12px;color:#8478a8;margin-top:2px;line-height:1.4}
+  .pc-score{font-weight:800;font-size:15px;padding:4px 11px;border-radius:12px;color:#fff;white-space:nowrap}
+  .pc-fairs{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:12px}
+  .pc-fair{background:linear-gradient(120deg,rgba(46,224,200,.12),rgba(91,141,255,.10));border:1px solid rgba(46,224,200,.3);border-radius:14px;padding:13px 15px}
+  .pc-fair h4{font-size:14px;margin:0}.pc-fair p{font-size:12px;color:#4c6b7a;margin-top:5px;line-height:1.5}
+  .pc-foot{margin-top:18px;font-size:11.5px;color:#9385b8;line-height:1.6;border-top:1px solid var(--pc-line);padding-top:12px}
 </style>
 </head>
 <body>
@@ -225,6 +284,7 @@
   <span class="chip active" data-f="all">🌈 ทั้งหมด</span>
   <span class="chip" data-f="new">✨ มาใหม่ล่าสุด</span>
   <span class="chip" data-f="gap">💡 หมวดที่เรายังไม่มี</span>
+  <span class="chip" data-f="prod">🏭 ปฏิทินการผลิต</span>
   <span class="chip" data-f="trend">📈 เทรนด์ & กระแสตอนนี้</span>
   <span class="chip" data-f="school">🎒 สอบเข้าโรงเรียนเด็ก</span>
   <span class="chip" data-f="satit">🏫 โรงเรียนสาธิต</span>
@@ -1128,8 +1188,79 @@ function cardHTML(e){
     '<a class="link" href="'+e.link+'" target="_blank">'+(e.cat==='trend'?'ดูแหล่งอ้างอิง →':'เว็บทางการ →')+'</a>';
   return c;
 }
+// ===== ปฏิทินการผลิต & จังหวะวางขาย (แถบแยก) =====
+function renderProd(){
+  const M=['ม.ค.','ก.พ.','มี.ค.','เม.ย.','พ.ค.','มิ.ย.','ก.ค.','ส.ค.','ก.ย.','ต.ค.','พ.ย.','ธ.ค.'];
+  const spanM=(a,b)=>{let r=[],m=a;for(let i=0;i<12;i++){r.push(m);if(m===b)break;m=m%12+1;}return r;};
+  const mlab=(a,b)=>M[a-1]+(a===b?'':'–'+M[b-1]);
+  const D=[
+   {id:'lang',ic:'🈶',name:'ภาษาจีน/ญี่ปุ่น/เกาหลี (HSK·JLPT·TOPIK)',col:'#00b3a4',exam:[7,12],buy:[3,12],shelf:4,mkt:'L',opp:'สูง',ever:true,vol:'~60,000–120,000 คน/ปี (3 ภาษารวม)',note:'สอบหลายรอบ/ปี (JLPT ก.ค.&ธ.ค. · HSK รายเดือน · TOPIK หลายรอบ) → ดีมานด์ทั้งปี เจ้าตลาดยังน้อย = โอกาสสูงสุด ทำเป็นซีรีส์ N5–N1/HSK1–6 รีเฟรชก่อน พ.ค. และ ต.ค.'},
+   {id:'trend',ic:'📈',name:'เทรนด์ & กระแสมาแรง',col:'#ff5c9d',exam:[],buy:[1,12],shelf:3,mkt:'L',opp:'สูง',ever:false,fair:true,vol:'ตามกระแส — เล่มฮิตแตะหลักหมื่น–แสนเล่ม',note:'ไม่ผูกวันสอบ แต่ผูกคลื่นกระแส — จับสัญญาณโซเชียลล่วงหน้า 6–12 ด. แล้วปล่อยให้ตรงงานหนังสือ (มี.ค.–เม.ย./ต.ค.) เสี่ยงสูงแต่สปีด/กำไรสูงถ้าจับทัน'},
+   {id:'gov',ic:'🏛️',name:'สอบราชการ (ก.พ. ภาค ก · บรรจุ · ครูผู้ช่วย)',col:'#ff9a3d',exam:[2,3],buy:[12,3],shelf:11,mkt:'XL',opp:'กลาง',ever:true,vol:'~500,000+ คน/ปี (ก.พ. ภาค ก)',note:'ก.พ. ภาค ก คนสอบ 5 แสน+/ปี คาดเดาได้ → คู่มือแกนต้องมีสต๊อกตลอด รีเฟรชก่อน ธ.ค. · ตำแหน่งบรรจุเฉพาะกรมประกาศกะทันหัน ทำเล่ม “ภาค ก กลาง” ครอบไว้'},
+   {id:'schgen',ic:'🎒',name:'สอบเข้า ม.1/ม.4 ทั่วไป + เตรียมอุดม',col:'#5b8dff',exam:[2,3],buy:[10,3],shelf:9,mkt:'XL',opp:'กลาง',ever:false,vol:'~50,000+ คน/ปี (แข่ง 1:10+)',note:'ตลาดใหญ่สุดสายโรงเรียน สอบ ก.พ.–มี.ค. พ่อแม่ซื้อล่วงหน้าตั้งแต่เปิดเทอม → วางขายให้ทัน ก.ย. ปีก่อนสอบ เริ่มผลิต ธ.ค.–มี.ค.'},
+   {id:'tcas',ic:'📚',name:'TCAS / เกณฑ์ยื่นมหาวิทยาลัย',col:'#a855ff',exam:[12,3],buy:[5,11],shelf:5,mkt:'XL',opp:'กลาง',ever:false,vol:'~200,000–300,000 คน/วิชา/ปี',note:'พีคซื้อ 2 ช่วง: เปิดเทอม ม.6 (พ.ค.–ก.ค.) และก่อนสอบ (ต.ค.–พ.ย.) TGAT/TPAT ต้น ธ.ค., A-Level มี.ค. → วางขายก่อนเปิดเทอม พ.ค. อัปเดตเกณฑ์ทุกปีหลัง มี.ค.–เม.ย.'},
+   {id:'satit',ic:'🏫',name:'โรงเรียนสาธิต (ป.1 / ม.1 / ม.4)',col:'#f857c0',exam:[3],buy:[9,3],shelf:8,mkt:'M',opp:'สูง',ever:false,vol:'~1,000–5,000 คน/ร.ร./ปี (พรีเมียม)',note:'ตลาดวงในพรีเมียม เจ้าตลาดน้อย ราคาต่อเล่มสูง สอบราว มี.ค. พ่อแม่วางแผนยาว → วางขาย ส.ค.–ก.ย. จุดขายคือเกร็ดวงใน/แนวข้อสอบเฉพาะสาธิตแต่ละแห่ง'},
+   {id:'mil',ic:'🎖️',name:'เตรียมทหาร – ตำรวจ – จ่า – นายร้อย',col:'#7a8cff',exam:[3,4],buy:[10,3],shelf:9,mkt:'L',opp:'กลาง',ever:false,vol:'~80,000–150,000 คน/ปี (ทุกเหล่ารวม)',note:'ติวยาว ซื้อล่วงหน้าหลายเดือน สอบภาควิชาการ ~มี.ค.–เม.ย. รับสมัคร ม.ค.–ก.พ. → วางขายให้ทัน ก.ย.–ต.ค. เริ่มผลิต ธ.ค.–มี.ค.'},
+   {id:'fin',ic:'💳',name:'ใบอนุญาตการเงิน/ประกัน (IC·คปภ.·CFP·TA)',col:'#12a58c',exam:[1,12],buy:[1,12],shelf:2,mkt:'M',opp:'สูง',ever:true,vol:'~30,000–50,000 คน/ปี (IC) + คปภ. รายเดือน',note:'IC & คปภ. สอบเกือบทุกเดือน → ดีมานด์นิ่งทั้งปี เจ้าตลาดเฉพาะทางน้อย ทำคู่มือ+ชุดข้อสอบเก็งอัปเดตตามประกาศ ก.ล.ต./คปภ.'},
+   {id:'olym',ic:'🏅',name:'โอลิมปิก / สอวน. / แข่งขันวิชาการ',col:'#ffab3d',exam:[8],buy:[4,7],shelf:3,mkt:'M',opp:'สูง',ever:false,vol:'~50,000–100,000 คน/ปี (ทุกสนามรวม)',note:'ค่าย 1 สอบ ~ส.ค. สมัคร มิ.ย.–ก.ค. → วางขายให้ทัน มี.ค.–เม.ย. เริ่มผลิต มิ.ย.–ก.ย. ปีก่อน กลุ่มจริงจังยอมจ่ายเล่มเจาะลึก คู่แข่งน้อย'},
+   {id:'soe',ic:'⚡',name:'รัฐวิสาหกิจ / งานมั่นคง',col:'#3dc9d6',exam:[3,6],buy:[1,6],shelf:2,mkt:'M',opp:'สูง',ever:true,vol:'~10,000–30,000 คน/รอบรับสมัคร',note:'ประกาศรับเป็นรอบ ๆ คาดเดายาก + หน้าต่างซื้อสั้น → ต้องมีคู่มือแกนพร้อมสต๊อกตลอด (ความถนัด+ความรู้ทั่วไป+อังกฤษ) ออกรอบรีเฟรชต้นปี เจ้าตลาดยังน้อย'},
+   {id:'prof',ic:'⚕️',name:'ใบประกอบวิชาชีพ (พยาบาล·CPA·วิศวะ·ทนาย)',col:'#f857c0',exam:[1,12],buy:[1,12],shelf:2,mkt:'M',opp:'กลาง',ever:true,vol:'หลักหมื่น คน/ปี (ทุกวิชาชีพรวม)',note:'สอบเป็นรอบตามสภาวิชาชีพ (พยาบาล ~3 รอบ/ปี · CPA รายไตรมาส) ดีมานด์นิ่ง ซื้อ 2–4 ด. ก่อนรอบ ทำเล่มมาตรฐาน+อัปเดตเมื่อกฎเปลี่ยน'},
+   {id:'schsci',ic:'🔬',name:'สอบเข้า ม.4 วิทย์ (MWIT·จภ.·วมว.·KVIS)',col:'#2ee0c8',exam:[11],buy:[7,10],shelf:7,mkt:'L',opp:'กลาง',ever:false,vol:'~10,000–20,000 คน/ปี (สาย ม.4 วิทย์)',note:'สอบรอบแรก ~15 พ.ย. รับสมัคร ส.ค. → วางขายให้ทัน ก.ค. เริ่มผลิต ต.ค.–ก.พ. ปีก่อน เนื้อหาเกิน ป.6 เจาะคณิต–วิทย์เชิงลึก กลุ่มคุณภาพสูง'},
+   {id:'soft',ic:'🌱',name:'Soft Skill & คอร์สได้ใบเซอร์',col:'#8f66ff',exam:[],buy:[1,12],shelf:3,mkt:'L',opp:'กลาง',ever:false,fair:true,vol:'วัยทำงาน/นักศึกษา — ตลาดกว้างหลักล้าน',note:'ไม่ผูกสอบ ผูกของขวัญ+ตั้งเป้าปีใหม่ (ธ.ค.–ม.ค.) และงานหนังสือ (มี.ค.–เม.ย./ต.ค.) EQ·สื่อสาร·ภาวะผู้นำ·คิดวิเคราะห์ ขายวัยทำงาน/นักศึกษา'},
+   {id:'inter',ic:'🌏',name:'ยื่นคะแนนต่างประเทศ (IELTS·TOEFL·SAT·GED)',col:'#5b8dff',exam:[1,12],buy:[1,12],shelf:2,mkt:'L',opp:'ต่ำ',ever:true,vol:'ไทย ~หลักหมื่น–แสน คน/ปี',note:'สอบได้ทั้งปี ดีมานด์นิ่งแต่เจ้าตลาดเป็นสำนักพิมพ์ต่างชาติรายใหญ่ (Cambridge/ETS) แข่งตรงยาก → เล่นมุมสรุป/ติวภาษาไทยประกอบ หรือโฟกัสหมวดโอกาสสูงกว่า'},
+  ];
+  const MKTW={XL:4,L:3,M:2,S:1},OPPW={'สูง':3,'กลาง':2,'ต่ำ':1},MKTL={XL:'ตลาดใหญ่มาก',L:'ตลาดใหญ่',M:'ตลาดกลาง',S:'ตลาดเล็ก'};
+  const prodWin=s=>[((s-9-1+120)%12)+1,((s-6-1+120)%12)+1];
+  const now=new Date(),cm=now.getMonth()+1;
+  const daysToM=m=>{const t0=new Date(now.getFullYear(),now.getMonth(),now.getDate());let t=new Date(now.getFullYear(),m-1,1);if(t<t0)t=new Date(now.getFullYear()+1,m-1,1);return Math.round((t-t0)/86400000);};
+  const dayTag=(days,ever)=>{if(ever)return{c:'#8a5fd0',txt:'หมุนเวียนทั้งปี · รอบรีเฟรชหน้า ~'+days+' วัน'};let c;if(days>=270)c='#12a58c';else if(days>=180)c='#2a9d78';else if(days>=90)c='#e08a1e';else c='#d24b6b';return{c,txt:days.toLocaleString()+' วัน'};};
+
+  let h='<div class="pc-wrap">';
+  // KEY
+  h+='<div class="pc-key"><div class="pc-big">ระยะผลิต 6–9 เดือน = ต้อง<b>ตัดสินใจล่วงหน้าเกือบ 1 ปี</b> ก่อนวันสอบ · คนซื้อคู่มือ “ก่อนสอบ” ไม่ใช่ “ตอนสมัคร” — พลาดหน้าต่างนี้ = ขายไม่ทันทั้งรอบ (รออีก 1 ปี)</div>';
+  const pushes=[
+   {c:'#5b8dff',bg:'rgba(91,141,255,.15)',t:'พีค ก.พ.–มี.ค. (ใหญ่สุด)',w:'ม.1/ม.4 · สาธิต · เตรียมอุดม · เตรียมทหาร · A-Level',f:'ผลิต <em>พ.ย.–มี.ค.</em> → วางขาย <em>ส.ค.–ก.ย.</em> → สอบ ก.พ.–มี.ค.'},
+   {c:'#12a58c',bg:'rgba(46,224,200,.15)',t:'พีค ส.ค.–พ.ย. (สายวิทย์)',w:'ม.4 วิทย์ (MWIT/จภ./วมว.) · โอลิมปิก สอวน.',f:'ผลิต <em>มิ.ย.–ต.ค.</em> ปีก่อน → วางขาย <em>มี.ค.–ก.ค.</em> → สอบ ส.ค. & พ.ย.'},
+   {c:'#ff9a3d',bg:'rgba(255,154,61,.15)',t:'กลางปี & ทั้งปี',w:'ราชการ ก.พ. · TCAS · ภาษา · การเงิน (ต่อเนื่อง)',f:'ผลิตล่วงหน้า → วางขาย <em>พ.ค. & พ.ย.</em> · กลุ่ม evergreen เติมสต๊อก/รีเฟรชได้ตลอด'},
+  ];
+  h+='<div class="pc-pushes">'+pushes.map(p=>'<div class="pc-push"><span class="pc-tag" style="background:'+p.bg+';color:'+p.c+'">'+p.t+'</span><h4>'+p.w+'</h4><div class="pc-flow">'+p.f+'</div></div>').join('')+'</div></div>';
+
+  // NOW
+  const stamp='คำนวณ ณ เดือน '+M[cm-1]+' '+(now.getFullYear()+543);
+  h+='<div class="pc-sect">⚡ ทำอะไรตอนนี้ ('+stamp+')</div>';
+  h+='<div class="pc-daylegend">⏳ สีของ “เวลาเหลือ”: <b style="color:#12a58c">เขียว ≥270 วัน</b> ทำเล่มใหม่ทันสบาย · <b style="color:#2a9d78">เขียวเข้ม 180–269</b> ยังทัน · <b style="color:#e08a1e">ส้ม 90–179</b> เร่ง/ทันแค่ปรับปรุง · <b style="color:#d24b6b">แดง &lt;90</b> ทันแค่พิมพ์ซ้ำ — เพราะผลิตเล่มใหม่ใช้ ~180–270 วัน</div>';
+  const nc=D.map(d=>{const until=(d.shelf-cm+12)%12;let label,color;if(d.ever){label='ผลิต/รีเฟรชได้ตลอด — เล็งรอบถัดไป';color='#8a5fd0';}else if(until>=6&&until<=9){label='⭐ เริ่มผลิตตอนนี้ทันพอดี';color='#12a58c';}else if(until>9||until===0){label='ยังมีเวลา — วางแผน/เขียนต้นฉบับ';color='#3a7bd0';}else if(until>=3){label='เร่งผลิต — งานควรคืบแล้ว';color='#e08a1e';}else{label='รอบนี้ทันแค่พิมพ์ซ้ำ/เติมสต๊อก';color='#d24b6b';}return{d,label,color};});
+  const ordv={'#12a58c':0,'#e08a1e':1,'#d24b6b':2,'#3a7bd0':3,'#8a5fd0':4};
+  nc.sort((a,b)=>ordv[a.color]-ordv[b.color]);
+  h+='<div class="pc-nowgrid">'+nc.map(n=>{const d=n.d,pw=prodWin(d.shelf),dt=dayTag(daysToM(d.shelf),d.ever);return '<div class="pc-nowc" style="border-left-color:'+d.col+'"><div class="pc-cat">'+d.ic+' '+d.name+'</div><div class="pc-s2" style="color:'+n.color+'">'+n.label+'</div><div class="pc-meta">'+(d.ever?'ดีมานด์ต่อเนื่องทั้งปี':'วางขายให้ทัน: <b>'+M[d.shelf-1]+'</b> · เริ่มผลิต: <b>'+mlab(pw[0],pw[1])+'</b>')+'<br>⏳ เวลาเหลือ: <b style="color:'+dt.c+'">'+dt.txt+'</b><br>👥 <b>'+d.vol+'</b><br><span class="pc-badge" style="background:'+(d.opp==='สูง'?'#12a58c':d.opp==='กลาง'?'#e0902e':'#b0b0c0')+'">โอกาส '+d.opp+'</span> <span class="pc-badge" style="background:#8a7fd0">'+MKTL[d.mkt]+'</span></div></div>';}).join('')+'</div>';
+
+  // TIMELINE
+  h+='<div class="pc-sect">🗓️ ไทม์ไลน์ทั้งปี — ผลิต → วางขาย → สอบ</div><div class="pc-tlwrap"><table class="pc-tl"><thead><tr><th class="pc-rowlbl">หมวด</th>';
+  for(let m=1;m<=12;m++){h+='<th'+([2,3,11,12].includes(m)?' class="pc-q"':'')+'>'+M[m-1]+'</th>';}
+  h+='</tr></thead><tbody>';
+  const tlOrder=[...D].sort((a,b)=>prodWin(a.shelf)[0]-prodWin(b.shelf)[0]);
+  tlOrder.forEach(d=>{const buy=d.ever?spanM(1,12):spanM(d.buy[0],d.buy[1]);const pw=prodWin(d.shelf);const prod=d.ever?[]:spanM(pw[0],pw[1]);h+='<tr><td class="pc-rowlbl">'+d.ic+' '+d.name.split('(')[0].split('/')[0].trim()+'</td>';for(let m=1;m<=12;m++){let cls='pc-c';if(prod.includes(m))cls+=' pc-prod';if(buy.includes(m))cls+=' pc-buy';if(m===cm)cls+=' pc-now';let dot='';if(d.exam.length&&(d.exam.length===2?(m===d.exam[0]||m===d.exam[1]):d.exam.includes(m)))dot='🔴';if(!d.ever&&m===d.shelf)dot='📗';h+='<td class="'+cls+'">'+(dot?'<span class="pc-dot">'+dot+'</span>':'')+'</td>';}h+='</tr>';});
+  h+='</tbody></table><div class="pc-legend"><span><i class="pc-sw pc-p"></i> ช่วงเริ่มผลิต (6–9 ด. ก่อนวางขาย)</span><span><i class="pc-sw pc-b"></i> หน้าต่างการซื้อ</span><span>📗 วางขายภายใน</span><span>🔴 เดือนสอบ</span><span style="color:#a855ff;font-weight:700">▢ เดือนนี้</span></div></div>';
+
+  // RANK
+  h+='<div class="pc-sect">🏆 ผลิตหมวดไหนก่อน (ตลาด × โอกาสของ สนพ.)</div>';
+  const reasons={lang:'สอบทั้งปี ดีมานด์นิ่ง เจ้าตลาดน้อย ทำซีรีส์ขายยาว',trend:'ตลาดใหญ่+มาร์จิ้นสูงถ้าจับกระแสทัน (เสี่ยงสูง ต้องเร็ว)',gov:'ก.พ. 5 แสน+/ปี คาดเดาได้ ทำแกนหลักขายทุกปี',schgen:'ตลาดใหญ่สุดสายโรงเรียน พ่อแม่พร้อมจ่าย',tcas:'ฐานผู้สอบมหาศาล ซื้อซ้ำหลายวิชา อัปเดตเกณฑ์ทุกปี',satit:'พรีเมียม ราคาต่อเล่มสูง คู่แข่งน้อย จุดขายวงใน',fin:'IC/คปภ. สอบทุกเดือน ดีมานด์นิ่ง เฉพาะทางน้อยเจ้า',olym:'กลุ่มจริงจังยอมจ่ายเล่มเจาะลึก คู่แข่งน้อย',soe:'โอกาสสูง แต่ประกาศไม่แน่นอน ทำแกนไว้ล่วงหน้า',mil:'ติวยาว ซื้อล่วงหน้า ตลาดมั่นคงทุกปี',schsci:'กลุ่มคุณภาพสูง แต่หน้าต่างแคบ ต้องวางขาย ก.ค.',prof:'ดีมานด์นิ่งตามสภาวิชาชีพ อัปเดตเมื่อกฎเปลี่ยน',soft:'ตลาดกว้าง ผูกงานหนังสือ/ปีใหม่ แข่งขันสูง',inter:'เจ้าตลาดต่างชาติแข็ง แข่งตรงยาก โฟกัสอื่นก่อน'};
+  const ranked=D.map(d=>{let s=MKTW[d.mkt]*OPPW[d.opp];if(d.id==='satit')s+=1;return{d,s};}).sort((a,b)=>b.s-a.s);
+  const sc=s=>s>=9?'#12a58c':s>=7?'#3a9bd0':s>=5?'#e0902e':'#b06bd0';
+  h+='<div class="pc-rank">'+ranked.map((r,i)=>'<div class="pc-rr"><div class="pc-no">'+(i+1)+'</div><div><div class="pc-tt">'+r.d.ic+' '+r.d.name+'</div><div class="pc-rs">'+(reasons[r.d.id]||'')+'</div></div><div class="pc-score" style="background:'+sc(r.s)+'">'+r.s+'</div></div>').join('')+'</div>';
+
+  // CARDS
+  h+='<div class="pc-sect">📚 รายละเอียดรายหมวด</div><div class="pc-cards">'+D.map(d=>{const pw=prodWin(d.shelf),dt=dayTag(daysToM(d.shelf),d.ever);const examTxt=d.exam.length?(d.exam.length===2?M[d.exam[0]-1]+' & '+M[d.exam[1]-1]:M[d.exam[0]-1]):'ตามรอบ/ทั้งปี';const buyTxt=d.ever?'ต่อเนื่องทั้งปี':mlab(d.buy[0],d.buy[1]);const shelfTxt=d.ever?'มีสต๊อกตลอด':M[d.shelf-1];const prodTxt=d.ever?'ผลิต/รีเฟรชได้ตลอด':mlab(pw[0],pw[1]);const opCol=d.opp==='สูง'?'#12a58c':d.opp==='กลาง'?'#e0902e':'#9aa';return '<div class="pc-cc" style="border-top-color:'+d.col+'"><h4>'+d.ic+' '+d.name+'</h4><div class="pc-pills"><span class="pc-pl pc-m">'+MKTL[d.mkt]+'</span><span class="pc-pl pc-o" style="color:'+opCol+'">โอกาส '+d.opp+'</span>'+(d.ever?'<span class="pc-pl">ขายได้ทั้งปี</span>':'')+(d.fair?'<span class="pc-pl">ผูกงานหนังสือ</span>':'')+'</div><div class="pc-rl"><span class="pc-k">👥 ตลาดผู้ซื้อ</span><span class="pc-v" style="color:#c23a6b">'+d.vol+'</span></div><div class="pc-rl"><span class="pc-k">🔴 เดือนสอบ</span><span class="pc-v" style="color:#c23a6b">'+examTxt+'</span></div><div class="pc-rl"><span class="pc-k">🟡 หน้าต่างซื้อ</span><span class="pc-v">'+buyTxt+'</span></div><div class="pc-rl"><span class="pc-k">📗 วางขายภายใน</span><span class="pc-v" style="color:#12a58c">'+shelfTxt+'</span></div><div class="pc-rl"><span class="pc-k">🏭 เริ่มผลิต</span><span class="pc-v" style="color:#3a7bd0">'+prodTxt+'</span></div><div class="pc-rl"><span class="pc-k">⏳ เวลาเหลือ</span><span class="pc-v" style="color:'+dt.c+'">'+dt.txt+(d.ever?'':' <span style="font-weight:400;color:#9385b8;font-size:11px">ถึงกำหนดวางขาย</span>')+'</span></div><div class="pc-nt">'+d.note+'</div></div>';}).join('')+'</div>';
+
+  // FAIRS + FOOT
+  h+='<div class="pc-sect">🎪 หมุดวางขายสำคัญ — งานหนังสือ</div><div class="pc-fairs"><div class="pc-fair"><h4>สัปดาห์หนังสือแห่งชาติ</h4><p>ปลาย มี.ค.–ต้น เม.ย. · เปิดตัวเล่มใหม่ที่ดีที่สุดของครึ่งปีแรก ตรงพีคสอบเข้าโรงเรียน/สาธิต/เตรียมอุดม — เล่มต้อง<b>เสร็จก่อน มี.ค.</b></p></div><div class="pc-fair"><h4>มหกรรมหนังสือระดับชาติ</h4><p>ต.ค. · เปิดตัวครึ่งปีหลัง ดันกลุ่มเทรนด์/soft skill + คู่มือรอบสอบต้นปีถัดไป — เล่มต้อง<b>เสร็จก่อน ก.ย.</b></p></div><div class="pc-fair"><h4>เปิดเทอม พ.ค. & ปีใหม่ ธ.ค.–ม.ค.</h4><p>พ.ค. = ม.6 เริ่มเตรียม TCAS (ดันคู่มือมหาลัย/ภาษา) · ธ.ค.–ม.ค. = ของขวัญ & ตั้งเป้าปีใหม่ (ดัน soft skill/พัฒนาตัวเอง/การเงิน)</p></div></div>';
+  h+='<div class="pc-foot">วิธีคำนวณ: ดึงวันสอบจริง/คาดการณ์จากการ์ดใน ExamRadar → กำหนดหน้าต่างการซื้อตามพฤติกรรมผู้ซื้อรายหมวด → “วางขายภายใน” = ต้นหน้าต่างซื้อ → “เริ่มผลิต/เวลาเหลือ” = ถอยหลัง 6–9 เดือน (~180–270 วัน) · คะแนนลำดับ = ขนาดตลาด (XL4·L3·M2) × โอกาสของ สนพ. (สูง3·กลาง2·ต่ำ1) โดยสาธิตบวกแต้มพรีเมียม · วันสอบบางหมวดเป็นค่าคาดการณ์ ควรยืนยันปฏิทินทางการก่อนล็อกแผนพิมพ์</div>';
+  h+='</div>';
+  return h;
+}
 function render(filter){
   area.innerHTML='';
+  if(filter==='prod'){ area.innerHTML=renderProd(); return; }
   if(filter==='new'){
     const items=exams.filter(e=>e.isNew);
     const gt=document.createElement('div');gt.className='group-title';gt.textContent='✨ เพิ่งเปิด / มาใหม่ล่าสุด';
