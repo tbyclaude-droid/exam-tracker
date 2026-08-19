@@ -252,6 +252,26 @@
   .pc-fair{background:linear-gradient(120deg,rgba(46,224,200,.12),rgba(91,141,255,.10));border:1px solid rgba(46,224,200,.3);border-radius:14px;padding:13px 15px}
   .pc-fair h4{font-size:14px;margin:0}.pc-fair p{font-size:12px;color:#4c6b7a;margin-top:5px;line-height:1.5}
   .pc-foot{margin-top:18px;font-size:11.5px;color:#9385b8;line-height:1.6;border-top:1px solid var(--pc-line);padding-top:12px}
+
+  /* ===== ช่องค้นหาในหน้าเว็บ ===== */
+  .searchwrap{max-width:760px;margin:0 auto 8px}
+  .searchbox{position:relative;display:flex;align-items:center;gap:9px;background:rgba(255,255,255,.92);border:2px solid rgba(168,85,255,.35);border-radius:16px;padding:12px 15px;box-shadow:0 8px 24px rgba(168,85,255,.12)}
+  .searchbox:focus-within{border-color:#a855ff;box-shadow:0 10px 30px rgba(168,85,255,.24)}
+  .searchbox .sicon{font-size:18px;opacity:.85}
+  .searchbox input{flex:1;border:none;outline:none;background:transparent;font-family:inherit;font-size:15px;color:var(--ink);min-width:0}
+  .searchbox input::placeholder{color:#aca1cb}
+  .clearx{display:none;cursor:pointer;color:#b0a4cc;font-size:15px;line-height:1;padding:3px 7px;border-radius:50%;user-select:none}
+  .clearx:hover{background:#f0ebff;color:#7a3fd0}
+  .suggest{display:none;position:absolute;top:calc(100% + 7px);left:0;right:0;background:#fff;border:1px solid rgba(120,90,180,.2);border-radius:14px;box-shadow:0 14px 34px rgba(80,50,140,.2);overflow:hidden auto;z-index:60;max-height:min(60vh,360px)}
+  .sug-item{padding:10px 15px;font-size:14px;cursor:pointer;display:flex;align-items:center;gap:9px;border-bottom:1px solid #f2eefb}
+  .sug-item:last-child{border-bottom:none}
+  .sug-item:hover,.sug-item.sug-hl{background:#f7f3ff}
+  .sug-item .sug-cat{margin-left:auto;font-size:11px;color:#a99ec8;white-space:nowrap;flex-shrink:0}
+  .sug-item b{color:#a855ff}
+  .examples{max-width:760px;margin:0 auto 4px;display:flex;flex-wrap:wrap;gap:7px;align-items:center}
+  .examples .exlabel{font-size:12.5px;color:#8478a8;font-weight:600}
+  .exchip{font-size:12.5px;padding:4px 11px;border-radius:20px;background:rgba(255,255,255,.82);border:1px solid rgba(168,85,255,.28);color:#7a3fd0;cursor:pointer;transition:.15s;white-space:nowrap}
+  .exchip:hover{background:#a855ff;color:#fff;border-color:transparent}
 </style>
 </head>
 <body>
@@ -279,6 +299,16 @@
 </div>
 
 <div class="glass popwrap" id="popchart"></div>
+
+<div class="searchwrap">
+  <div class="searchbox">
+    <span class="sicon">🔍</span>
+    <input id="q" type="text" autocomplete="off" spellcheck="false" placeholder="พิมพ์อะไรก็ค้นเจอ — ชื่อสนาม · หน่วยงาน · วิชา · เดือนสอบ (เช่น IMSO, ก.พ., พยาบาล, TOEIC)">
+    <span class="clearx" id="clearq" title="ล้างคำค้น">✕</span>
+    <div class="suggest" id="suggest"></div>
+  </div>
+</div>
+<div class="examples" id="examples"><span class="exlabel">💡 ลองค้น:</span></div>
 
 <div class="filters" id="filters">
   <span class="chip active" data-f="all">🌈 ทั้งหมด</span>
@@ -1465,10 +1495,13 @@ function render(filter){
     items.forEach(e=>area.appendChild(cardHTML(e)));
   });
 }
+let curTab='all';
 document.querySelectorAll('.chip').forEach(ch=>{
   ch.addEventListener('click',()=>{
     document.querySelectorAll('.chip').forEach(c=>c.classList.remove('active'));
-    ch.classList.add('active');render(ch.dataset.f);
+    ch.classList.add('active');curTab=ch.dataset.f;
+    const qb=document.getElementById('q');if(qb){qb.value='';document.getElementById('clearq').style.display='none';document.getElementById('suggest').style.display='none';}
+    render(curTab);
   });
 });
 // ===== กราฟหมวดยอดนิยม (ดีมานด์โดยประมาณ อ้างอิงผู้สมัคร/ขนาดตลาด) =====
@@ -1525,6 +1558,69 @@ renderSpotlight();
 renderStats();
 renderPop();
 renderNews();
+// ===== ค้นหาในหน้าเว็บ (ค้นข้ามทุกฟิลด์ + คำแนะนำ + คำค้นตัวอย่าง) =====
+(function(){
+  const qEl=document.getElementById('q'), sug=document.getElementById('suggest'),
+        clearq=document.getElementById('clearq'), exWrap=document.getElementById('examples');
+  const norm=s=>(s==null?'':''+s).toLowerCase().replace(/[\s.\-\/·,()]/g,'');
+  const escH=s=>(''+s).replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));
+  const idx=exams.map(e=>({e, text:norm([e.name,e.org,e.tag,e.cat,groupNames[e.cat],e.prep,e.apps,e.books,e.keyLabel,(e.dates||[]).map(d=>d[0]+' '+d[1]).join(' ')].join(' '))}));
+  function find(q){
+    const toks=q.split(/\s+/).map(norm).filter(Boolean);
+    if(!toks.length) return [];
+    return idx.filter(it=>toks.every(t=>it.text.includes(t))).map(it=>it.e);
+  }
+  function hl(name,q){
+    const t=(q.trim().split(/\s+/)[0]||''); if(!t) return escH(name);
+    const i=name.toLowerCase().indexOf(t.toLowerCase());
+    if(i<0) return escH(name);
+    return escH(name.slice(0,i))+'<b>'+escH(name.slice(i,i+t.length))+'</b>'+escH(name.slice(i+t.length));
+  }
+  function results(q){
+    area.innerHTML='';
+    const items=find(q);
+    const head=document.createElement('div');head.className='group-title';
+    head.innerHTML='🔍 ผลการค้นหา “'+escH(q)+'” — พบ '+items.length+' รายการ';
+    area.appendChild(head);
+    if(!items.length){
+      const nt=document.createElement('div');nt.className='note';
+      nt.innerHTML='ไม่พบรายการที่ตรงกับ “'+escH(q)+'” · ลองพิมพ์คำสั้นลง หรือแตะคำค้นตัวอย่าง เช่น '+EX.slice(0,6).map(x=>'<b>'+x+'</b>').join(' · ');
+      area.appendChild(nt);return;
+    }
+    items.forEach(e=>area.appendChild(cardHTML(e)));
+  }
+  function suggest(q){
+    const items=find(q).slice(0,7);
+    if(!items.length){sug.style.display='none';return;}
+    sug.innerHTML=items.map(e=>'<div class="sug-item" data-n="'+encodeURIComponent(e.name)+'">🔎 <span>'+hl(e.name,q)+'</span><span class="sug-cat">'+groupNames[e.cat].replace(/^\S+\s/,'')+'</span></div>').join('');
+    sug.style.display='block';
+    sug.querySelectorAll('.sug-item').forEach(it=>it.addEventListener('mousedown',ev=>{
+      ev.preventDefault();
+      qEl.value=decodeURIComponent(it.dataset.n);
+      sug.style.display='none';clearq.style.display='block';
+      results(qEl.value.trim());
+      document.getElementById('cardArea').scrollIntoView({behavior:'smooth',block:'start'});
+    }));
+  }
+  function run(){
+    const q=qEl.value.trim();
+    clearq.style.display=q?'block':'none';
+    if(!q){sug.style.display='none';render(curTab);return;}
+    document.querySelectorAll('.chip').forEach(c=>c.classList.remove('active'));
+    suggest(q);results(q);
+  }
+  qEl.addEventListener('input',run);
+  qEl.addEventListener('focus',()=>{if(qEl.value.trim())suggest(qEl.value.trim());});
+  qEl.addEventListener('blur',()=>setTimeout(()=>{sug.style.display='none';},160));
+  qEl.addEventListener('keydown',e=>{if(e.key==='Escape'){qEl.value='';run();qEl.blur();}});
+  clearq.addEventListener('click',()=>{qEl.value='';run();qEl.focus();});
+  // คำค้นตัวอย่าง
+  const EX=['IMSO','ก.พ.','พยาบาล','TOEIC','สาธิต','TCAS','ครูผู้ช่วย','นายสิบตำรวจ','เนติบัณฑิต','IELTS','HSK','เตรียมทหาร','CFA','โอลิมปิก','เภสัช','ประกันภัย'];
+  EX.forEach(x=>{const c=document.createElement('span');c.className='exchip';c.textContent=x;
+    c.addEventListener('click',()=>{qEl.value=x;qEl.focus();run();document.getElementById('cardArea').scrollIntoView({behavior:'smooth',block:'start'});});
+    exWrap.appendChild(c);});
+})();
+
 render('all');
 </script>
 </body>
