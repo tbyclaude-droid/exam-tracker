@@ -253,6 +253,8 @@
   .pc-fair h4{font-size:14px;margin:0}.pc-fair p{font-size:12px;color:#4c6b7a;margin-top:5px;line-height:1.5}
   .pc-foot{margin-top:18px;font-size:11.5px;color:#9385b8;line-height:1.6;border-top:1px solid var(--pc-line);padding-top:12px}
 
+  .peakline{margin:8px 0 2px;font-size:.8rem;color:#b45309;background:rgba(255,213,128,.22);border:1px solid rgba(245,158,11,.32);border-radius:10px;padding:6px 10px;line-height:1.45}
+  .peakline b{color:#92400e}
   /* ===== ช่องค้นหาในหน้าเว็บ ===== */
   .searchwrap{max-width:760px;margin:0 auto 8px}
   .searchbox{position:relative;display:flex;align-items:center;gap:9px;background:rgba(255,255,255,.92);border:2px solid rgba(168,85,255,.35);border-radius:16px;padding:12px 15px;box-shadow:0 8px 24px rgba(168,85,255,.12)}
@@ -1168,7 +1170,7 @@ const exams = [
    dates:[["รูปแบบ","ฟัง-อ่าน (Listening & Reading) 990 คะแนน",true],["ใช้ทำอะไร","สมัครงานบริษัท · เลื่อนขั้น · จบ ป.ตรีบางคณะ",false],["สอบ","ศูนย์สอบทั่วประเทศ ทั้งปี",false]],
    apps:"ผู้สอบ ~100,000+ คน/ปีในไทย", seats:"ไม่จำกัด (สอบซ้ำได้)",
    prep:"ตลาดใหญ่ที่สุดของอังกฤษวัดระดับในไทย · คนทำงาน/นักศึกษาจบใหม่สอบจำนวนมากทุกปี · ดีมานด์นิ่งทั้งปี ขายได้ตลอด · คู่แข่งเยอะแต่ตลาดใหญ่มาก จุดขายคือเก็งแนวข้อสอบ+เทคนิคทำเร็ว",
-   fee:"ค่าสอบ ~1,500 บาท/ครั้ง", link:"https://www.ets.org/toeic", priceza:"https://www.priceza.com/s/ราคา/หนังสือ-TOEIC"},
+   fee:"ค่าสอบ ~1,500 บาท/ครั้ง", peak:{main:"มี.ค.–พ.ค. (จบใหม่ หางาน)",second:"ต.ค.–พ.ย."}, link:"https://www.ets.org/toeic", priceza:"https://www.priceza.com/s/ราคา/หนังสือ-TOEIC"},
 
   {name:"CU-TEP · TU-GET · CEFR (อังกฤษยื่นมหาลัยไทย)", org:"จุฬาฯ / ธรรมศาสตร์ / กรอบ CEFR · ยื่น ป.ตรี-โท ในไทย", cat:"inter", tag:"ยื่นคะแนน",
    key:null, keyLabel:"สอบหลายรอบ/ปี ตามศูนย์",
@@ -1303,7 +1305,7 @@ const exams = [
    dates:[["ระดับ","ธรรมศึกษาชั้นตรี · โท · เอก",true],["ผู้สอบ","นักเรียน ป.–ม. + ประชาชนทั่วประเทศ",false],["ใช้ทำอะไร","วุฒิธรรมศึกษา + เก็บกิจกรรม/หน่วยกิต",false]],
    apps:"ผู้สอบ ~1,000,000+ คน/ปี (ทั่วประเทศ)", seats:"ไม่จำกัด (ผ่านเกณฑ์)",
    prep:"สนามที่มีผู้เข้าสอบมากที่สุดแห่งหนึ่งของไทย (หลักล้านคน/ปี) เพราะโรงเรียนจัดสอบทั้งระบบ · ตลาดคู่มือ/สรุปธรรมศึกษา ตรี-โท-เอก ใหญ่และซื้อซ้ำทุกปี คู่แข่งเป็น สนพ.สายพุทธไม่กี่เจ้า = โอกาสตลาดใหญ่ที่มองข้าม",
-   fee:"ไม่มี/เล็กน้อย", market:{rivals:"คู่แข่งน้อยมาก — มีแค่ สนพ.สายพุทธ 2–3 เจ้า แต่ตลาดผู้สอบหลักล้านคน/ปี",gap:"น้อย"}, link:"https://www.gongtham.net", priceza:"https://www.priceza.com/s/ราคา/หนังสือ-ธรรมศึกษา"},
+   fee:"ไม่มี/เล็กน้อย", peak:{main:"ก.ค.–พ.ย. (ก่อนสอบสนามหลวง)",second:"—"}, market:{rivals:"คู่แข่งน้อยมาก — มีแค่ สนพ.สายพุทธ 2–3 เจ้า แต่ตลาดผู้สอบหลักล้านคน/ปี",gap:"น้อย"}, link:"https://www.gongtham.net", priceza:"https://www.priceza.com/s/ราคา/หนังสือ-ธรรมศึกษา"},
 
 
   // ===== อัปเดต 8 ก.ย. 69: ตำรวจสายอำนวยการ/ปราบปราม (ป.ตรี) =====
@@ -1382,6 +1384,22 @@ const marketByCat={
   soft:{rivals:"คู่แข่งเยอะ (คอร์สออนไลน์ > หนังสือ)",gap:"บางส่วน"},
   trend:null,
 };
+const peakByCat={
+  th:{main:"พ.ค.–ก.ค. (เปิดเทอม ม.6)",second:"ต.ค.–พ.ย. (ก่อนสอบ)"},
+  uni:{main:"พ.ค.–ก.ค. (วางแผนยื่น)",second:"ต.ค.–ธ.ค. (รอบ 1 Portfolio)"},
+  school:{main:"ก.ย.–ธ.ค. (ก่อนสอบ)",second:"มี.ค.–พ.ค. (ปิดเทอม/เปิดเทอม)"},
+  satit:{main:"ก.ย.–ธ.ค. (ก่อนสอบ)",second:"ม.ค.–ก.พ."},
+  olym:{main:"เม.ย.–ก.ค. (ก่อนค่าย/สอบ)",second:"ต.ค.–ธ.ค."},
+  gov:{main:"ธ.ค.–ก.พ. (ก่อน ก.พ. ภาค ก)",second:"ทั้งปี ตามประกาศบรรจุ"},
+  mil:{main:"ต.ค.–ก.พ. (ก่อนสอบ)",second:"พ.ค.–ก.ค."},
+  soe:{main:"ม.ค.–มิ.ย. (รอบรับหลัก)",second:"ตามประกาศทั้งปี"},
+  prof:{main:"ทั้งปี (ก่อนรอบสอบ 2–3 ด.)",second:"—"},
+  fin:{main:"ทั้งปี (สอบรายเดือน)",second:"—"},
+  inter:{main:"ต.ค.–พ.ย. (ก่อนรอบยื่นอินเตอร์/TCAS)",second:"มี.ค.–พ.ค. (ปิดเทอมใหญ่)"},
+  lang:{main:"ต.ค.–พ.ย. (ก่อน JLPT/สอบปลายปี)",second:"พ.ค.–มิ.ย. (ก่อนสอบกลางปี)"},
+  soft:{main:"ธ.ค.–ม.ค. (ปีใหม่/ตั้งเป้า)",second:"มี.ค.–เม.ย. + ต.ค. (งานหนังสือ)"},
+  trend:{main:"มี.ค.–เม.ย. (สัปดาห์หนังสือ)",second:"ต.ค. (มหกรรมหนังสือ)"},
+};
 const SHOPS=[["นายอินทร์","https://www.naiin.com/search-result?title="],["SE-ED","https://www.se-ed.com/search?filter.keyword="],["B2S","https://www.b2s.co.th/search?q="],["Shopee","https://shopee.co.th/search?keyword="]];
 function marketBlock(e){
   const m=e.market||marketByCat[e.cat];
@@ -1398,6 +1416,7 @@ function marketBlock(e){
   return '<div class="market"><span class="mh">🏪 ตลาด / คู่แข่ง</span>'+m.rivals+
     '<br><span class="gapbadge '+g[0]+'">'+g[1]+'</span>'+rl+'</div>';
 }
+function peakBlock(e){const P=e.peak||peakByCat[e.cat];if(!P)return '';return '<div class="peakline">🔥 พีคน่าขาย · <b>หลัก:</b> '+P.main+(P.second&&P.second!=='—'?' · <b>รอง:</b> '+P.second:'')+'</div>';}
 function cardHTML(e){
   const c=document.createElement('div');c.className='card'+(e.isNew?' isnew':'');
   const d=e.dates.map(x=>'<div class="dline"><span class="dlabel">'+x[0]+'</span><span class="dval '+(x[2]?'hot':'')+'">'+x[1]+'</span></div>').join('');
@@ -1405,7 +1424,7 @@ function cardHTML(e){
     '<div class="stripe '+stripeClass[e.cat]+'"></div>'+
     '<div class="card-top"><div><div class="exam-name">'+e.name+'</div><div class="exam-org">'+e.org+'</div></div>'+
     '<span class="tag '+tagClass[e.cat]+'">'+e.tag+'</span></div>'+
-    cdPill(e)+'<div class="dates">'+d+'</div>'+
+    cdPill(e)+'<div class="dates">'+d+'</div>'+peakBlock(e)+
     (e.apps?'<div class="statrow"><div class="statbox apps"><span class="sh">👥 ผู้สมัคร/เข้าสอบ (เฉลี่ย)</span><span class="sv">'+e.apps+'</span></div><div class="statbox seats"><span class="sh">🎯 จำนวนรับ/ที่นั่ง</span><span class="sv">'+e.seats+'</span></div></div>':'')+
     (e.prep?'<div class="prep"><span class="ph">📌 สิ่งที่ต้องใช้/ต้องรู้</span>'+e.prep+'</div>':'')+
     (e.books?'<div class="books"><span class="bh">📚 หนังสือแนะนำ (ThinkBeyond)</span>'+e.books+' <a href="'+e.booklink+'" target="_blank">ดูหมวด →</a></div>':'')+
