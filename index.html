@@ -201,6 +201,16 @@
   .pinchip:hover{filter:brightness(1.05);color:#fff}
   .note{background:rgba(255,246,229,.8);backdrop-filter:blur(8px);border-radius:16px;padding:14px;
     font-size:.8rem;color:#9a6b1a;margin-top:20px;border:1.5px solid rgba(255,224,163,.8)}
+  .prodcard{display:flex;align-items:center;gap:15px;margin:0 0 14px;padding:16px 20px;border-radius:18px;cursor:pointer;color:#fff;background:linear-gradient(120deg,var(--grad1),var(--grad2) 55%,var(--grad3));box-shadow:0 12px 30px -10px rgba(59,91,255,.55);transition:.18s;position:relative;overflow:hidden}
+  .prodcard::after{content:"";position:absolute;top:-40px;right:-30px;width:150px;height:150px;background:rgba(255,255,255,.14);border-radius:50%}
+  .prodcard:hover{transform:translateY(-2px);box-shadow:0 16px 40px -10px rgba(139,92,246,.7)}
+  .prodcard:focus-visible{outline:3px solid var(--grad4);outline-offset:2px}
+  .prodcard .pcard-ic{font-size:34px;flex:none;z-index:1}
+  .prodcard .pcard-txt{flex:1;min-width:0;z-index:1}
+  .prodcard .pcard-t{font-weight:800;font-size:1.06rem}
+  .prodcard .pcard-s{font-size:.79rem;opacity:.93;margin-top:2px;line-height:1.4}
+  .prodcard .pcard-go{flex:none;background:rgba(255,255,255,.22);border:1px solid rgba(255,255,255,.55);padding:8px 15px;border-radius:22px;font-weight:800;font-size:.85rem;white-space:nowrap;z-index:1}
+  @media(max-width:520px){.prodcard .pcard-go{display:none}.prodcard .pcard-s{display:none}}
   .searchwrap{margin:4px 0 8px}
   .searchbox{position:relative;display:flex;align-items:center;gap:9px;background:rgba(255,255,255,.92);border:2px solid rgba(139,92,246,.4);border-radius:16px;padding:11px 15px;box-shadow:0 8px 24px rgba(59,91,255,.12)}
   .searchbox:focus-within{border-color:var(--grad2);box-shadow:0 10px 30px rgba(139,92,246,.22)}
@@ -315,7 +325,6 @@
   <span class="chip active" data-f="all">🌈 ทั้งหมด</span>
   <span class="chip" data-f="new">✨ มาใหม่ล่าสุด</span>
   <span class="chip" data-f="gap">💡 หมวดที่เรายังไม่มี</span>
-  <span class="chip" data-f="prod">🏭 ปฏิทินการผลิต</span>
   <span class="chip" data-f="trend">📈 เทรนด์ & กระแสตอนนี้</span>
   <span class="chip" data-f="school">🎒 สอบเข้าโรงเรียนเด็ก</span>
   <span class="chip" data-f="satit">🏫 โรงเรียนสาธิต</span>
@@ -332,6 +341,11 @@
   <span class="chip" data-f="soft">🌱 Soft Skill ยอดนิยม</span>
 </aside>
 <div class="side">
+  <div class="prodcard" id="prodCard" role="button" tabindex="0">
+    <div class="pcard-ic">🏭</div>
+    <div class="pcard-txt"><div class="pcard-t">ปฏิทินการผลิต &amp; จังหวะวางขาย</div><div class="pcard-s">ควรผลิต/วางขายหนังสือเดือนไหน · พีคน่าขายรายหมวด · เวลาเหลือถึงวางขาย · ลำดับผลิตก่อน-หลัง</div></div>
+    <div class="pcard-go">เปิดดู →</div>
+  </div>
   <div class="searchwrap"><div class="searchbox"><span class="sicon">🔍</span><input id="q" type="text" autocomplete="off" spellcheck="false" placeholder="พิมพ์อะไรก็ค้นเจอ — เช่น IMSO, ก.พ., พยาบาล, TOEIC, GED"><span class="clearx" id="clearq" title="ล้างคำค้น">✕</span><div class="suggest" id="suggest"></div></div></div>
   <div class="examples" id="examples"><span class="exlabel">💡 ลองค้น:</span></div>
   <div id="cardArea"></div>
@@ -1414,8 +1428,18 @@ function marketBlock(e){
   return '<div class="market"><span class="mh">🏪 ตลาด / คู่แข่ง</span>'+m.rivals+
     '<br><span class="gapbadge '+g[0]+'">'+g[1]+'</span>'+rl+'</div>';
 }
-const bookCover={"2327":"https://sub.serazu.com/library/products/2327/8859099306232.jpg","1824":"https://sub.serazu.com/library/products/1824/8859099303712.jpg","4372":"https://sub.serazu.com/library/products/4372/9786164493933.jpg","5829":"https://sub.idcpremier.com/library/products/5829/9786164495586.jpg","5830":"https://sub.idcpremier.com/library/products/5830/9786164495593.jpg"};
-function coverOf(e){if(!e.booklink)return '';const m=e.booklink.match(/product\/(\d+)(?:$|[/?])/);return (m&&bookCover[m[1]])?bookCover[m[1]]:'';}
+const bookCover={"2327":"https://sub.serazu.com/library/products/2327/8859099306232.jpg","1824":"https://sub.serazu.com/library/products/1824/8859099303712.jpg","4372":"https://sub.serazu.com/library/products/4372/9786164493933.jpg","5829":"https://sub.idcpremier.com/library/products/5829/9786164495586.jpg","5830":"https://sub.idcpremier.com/library/products/5830/9786164495593.jpg","4173":"https://sub.serazu.com/library/products/4173/9786164493476.jpg","3919":"https://sub.serazu.com/library/products/3919/9786164492981.jpg","4235":"https://sub.serazu.com/library/products/4235/9786164493667.jpg","4205":"https://sub.serazu.com/library/products/4205/9786164493582.jpg","4429":"https://sub.idcpremier.com/library/products/4429/9786164493971.jpg","4758":"https://sub.idcpremier.com/library/products/4758/9786164494770.jpg","4027":"https://sub.serazu.com/library/products/4027/9786164493193.jpg","4101":"https://sub.serazu.com/library/products/4101/9786164493292.jpg","6531":"https://sub.idcpremier.com/library/products/6531/8859099313070.jpg"};
+// เล่มจริง ThinkBeyond แมปตามชื่อการ์ด (แม่นยำ)
+const nameBook={"TGAT / TPAT (2–5)":"4235","TPAT1 วิชาเฉพาะ กสพท":"4205","A-Level (7 วิชา)":"4235","TCAS70 — ลงทะเบียน myTCAS":"4235","ครูผู้ช่วย (สอบบรรจุครู สพฐ.)":"3919","นักเรียนเตรียมทหาร (4 เหล่า)":"4027","นักเรียนจ่า / ช่างฝีมือทหาร / พยาบาลทหาร-ตำรวจ":"4027","นายร้อยตำรวจ & ตำรวจชั้นประทวน":"4758","นายสิบตำรวจ (นสต.) & นายสิบทหาร (ประทวน)":"4758","ตำรวจสายอำนวยการ/ปราบปราม (บุคคลภายนอก วุฒิ ป.ตรี)":"4758","HSK / HSKK — ภาษาจีน":"4101","IELTS":"4429","Data · AI · Prompt (วิเคราะห์ข้อมูล + ใช้ AI)":"6531","AI & ทักษะดิจิทัลใช้จริง":"6531"};
+// เล่มตัวแทนรายหมวด (ใช้เมื่อไม่มีแบบเจาะจง) — เฉพาะหมวดที่ ThinkBeyond มีเล่มตรงจริง
+const catBook={gov:"4173"};
+function getBook(e){
+  var id=nameBook[e.name];
+  if(!id&&e.booklink){var m=e.booklink.match(/product\/(\d+)(?:$|[/?])/);if(m&&bookCover[m[1]])id=m[1];}
+  if(!id&&catBook[e.cat])id=catBook[e.cat];
+  if(!id||!bookCover[id])return null;
+  return {img:bookCover[id],link:"https://thinkbeyondbook.com/product/"+id};
+}
 function peakBlock(e){const P=e.peak||peakByCat[e.cat];if(!P)return '';return '<div class="peakline">🔥 พีคน่าขาย · <b>หลัก:</b> '+P.main+(P.second&&P.second!=='—'?' · <b>รอง:</b> '+P.second:'')+'</div>';}
 function cardHTML(e){
   const c=document.createElement('div');c.className='card'+(e.isNew?' isnew':'');
@@ -1427,7 +1451,7 @@ function cardHTML(e){
     cdPill(e)+'<div class="dates">'+d+'</div>'+peakBlock(e)+
     (e.apps?'<div class="statrow"><div class="statbox apps"><span class="sh">👥 ผู้สมัคร/เข้าสอบ (เฉลี่ย)</span><span class="sv">'+e.apps+'</span></div><div class="statbox seats"><span class="sh">🎯 จำนวนรับ/ที่นั่ง</span><span class="sv">'+e.seats+'</span></div></div>':'')+
     (e.prep?'<div class="prep"><span class="ph">📌 สิ่งที่ต้องใช้/ต้องรู้</span>'+e.prep+'</div>':'')+
-    (e.books?(function(){var cv=coverOf(e);return '<div class="books"><span class="bh">📚 หนังสือแนะนำ (ThinkBeyond)</span><div class="bookrow">'+(cv?'<a class="bookcover" href="'+e.booklink+'" target="_blank"><img src="'+cv+'" alt="ปกหนังสือ" loading="lazy" onerror="this.parentNode.style.display=\'none\'"></a>':'')+'<div class="bookinfo">'+e.books+' <a class="booklink" href="'+e.booklink+'" target="_blank">'+(cv?'ดูเล่มนี้ →':'ดูหมวด →')+'</a></div></div></div>';})():'')+
+    (function(){var b=getBook(e);if(!e.books&&!b)return '';var txt=e.books||'คู่มือเตรียมสอบจากสำนักพิมพ์';var lk=b?b.link:e.booklink;return '<div class="books"><span class="bh">📚 หนังสือแนะนำ (ThinkBeyond)</span><div class="bookrow">'+(b?'<a class="bookcover" href="'+lk+'" target="_blank"><img src="'+b.img+'" alt="ปกหนังสือ" loading="lazy" onerror="this.closest(\'.bookcover\').style.display=\'none\'"></a>':'')+'<div class="bookinfo">'+txt+' <a class="booklink" href="'+lk+'" target="_blank">'+(b?'ดูเล่มนี้ →':'ดูหมวด →')+'</a></div></div></div>';})()+
     marketBlock(e)+
     '<div class="fee">💰 '+e.fee+'</div>'+
     '<a class="link" href="'+e.link+'" target="_blank">'+(e.cat==='trend'?'ดูแหล่งอ้างอิง →':'เว็บทางการ →')+'</a>';
@@ -1625,6 +1649,7 @@ renderNews();
   clearq.addEventListener('click',()=>{qEl.value='';run();qEl.focus();});
   EX.forEach(x=>{const c=document.createElement('span');c.className='exchip';c.textContent=x;c.addEventListener('click',()=>{qEl.value=x;qEl.focus();run();});exWrap.appendChild(c);});
 })();
+(function(){var pc=document.getElementById('prodCard');if(pc){function go(){var qb=document.getElementById('q');if(qb){qb.value='';document.getElementById('clearq').style.display='none';document.getElementById('suggest').style.display='none';}document.querySelectorAll('.chip').forEach(c=>c.classList.remove('active'));curTab='prod';render('prod');document.getElementById('cardArea').scrollIntoView({behavior:'smooth',block:'start'});}pc.addEventListener('click',go);pc.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();go();}});}})();
 render('all');
 </script>
 </body>
