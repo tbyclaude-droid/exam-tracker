@@ -8,19 +8,19 @@
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Prompt:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap');
   :root{
-    --grad1:#ff5c9d; --grad2:#a855ff; --grad3:#5b8dff; --grad4:#2ee0c8;
-    --ink:#1a0f33; --muted:#8478a8; --card:rgba(255,255,255,.72); --bg:#eae4ff;
+    --grad1:#3b5bff; --grad2:#8b5cf6; --grad3:#22d3c5; --grad4:#b6f24e;
+    --ink:#191433; --muted:#7b70a6; --card:rgba(255,255,255,.74); --bg:#e8ebff;
     --th:#5b8dff; --inter:#2ee0c8; --gov:#ff9a3d; --prof:#f857c0; --soft:#22c4a8; --uni:#7c5cff; --school:#ff6a5c;
     --olym:#e0a100; --mil:#5f7a3a; --soe:#c0743a; --lang:#e0455f; --fin:#1f9e6b; --trend:#c026d3; --satit:#2f8fbf;
   }
   *{box-sizing:border-box;margin:0;padding:0;font-family:'Prompt',sans-serif}
   html{scroll-behavior:smooth}
-  body{color:var(--ink);line-height:1.5;padding:16px;max-width:920px;margin:0 auto;
+  body{color:var(--ink);line-height:1.5;padding:16px;max-width:1180px;margin:0 auto;
     overflow-x:hidden;position:relative;min-height:100vh;
     background:
-      radial-gradient(circle at 15% 10%, #ffd6ec 0, transparent 42%),
-      radial-gradient(circle at 85% 15%, #d4c4ff 0, transparent 45%),
-      radial-gradient(circle at 50% 90%, #c4f5ec 0, transparent 45%),
+      radial-gradient(circle at 15% 10%, #cdd7ff 0, transparent 42%),
+      radial-gradient(circle at 85% 15%, #e2d4ff 0, transparent 45%),
+      radial-gradient(circle at 50% 90%, #dcf5b8 0, transparent 45%),
       var(--bg);
     background-attachment:fixed;
   }
@@ -88,14 +88,19 @@
   .newsitem .nd{font-size:.68rem;color:var(--muted);white-space:nowrap;font-family:'Space Grotesk';flex-shrink:0;margin-top:2px}
 
   /* FILTERS */
-  .filters{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0 18px}
+  .layout{display:flex;gap:20px;align-items:flex-start}
+  .side{flex:1;min-width:0}
+  .filters{display:flex;flex-direction:column;gap:7px;width:236px;flex:none;position:sticky;top:14px;max-height:calc(100vh - 28px);overflow-y:auto;padding:8px;background:rgba(255,255,255,.5);border:1px solid rgba(255,255,255,.7);border-radius:20px;margin:4px 0 18px}
+  .filters .side-h{font-size:.72rem;font-weight:800;letter-spacing:.5px;color:var(--grad2);text-transform:uppercase;padding:4px 8px 2px}
+  .filters .chip{width:100%;text-align:left}
+  @media(max-width:860px){.layout{flex-direction:column}.filters{flex-direction:row;flex-wrap:wrap;width:auto;position:static;max-height:none}.filters .chip{width:auto}.filters .side-h{display:none}}
   .chip{background:rgba(255,255,255,.6);backdrop-filter:blur(8px);
     border:1.5px solid rgba(255,255,255,.7);color:var(--muted);
     padding:8px 16px;border-radius:22px;font-size:.82rem;font-weight:600;cursor:pointer;
     transition:.2s;user-select:none}
   .chip:hover{transform:translateY(-2px)}
   .chip.active{color:#fff;border-color:transparent;
-    background:linear-gradient(120deg,var(--grad2),var(--grad3));
+    background:linear-gradient(120deg,var(--grad1),var(--grad2));
     box-shadow:0 6px 18px -8px var(--grad2)}
 
   .group-title{font-size:.82rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;
@@ -169,6 +174,11 @@
   .books{margin-top:10px;padding:11px 13px;border-radius:12px;font-size:.8rem;line-height:1.5;
     background:linear-gradient(120deg,rgba(255,154,61,.12),rgba(248,87,192,.1));
     border:1px solid rgba(255,154,61,.25)}
+  .bookrow{display:flex;gap:11px;align-items:flex-start;margin-top:4px}
+  .bookcover{flex:none;display:block;width:66px;border-radius:7px;overflow:hidden;box-shadow:0 4px 12px rgba(80,50,140,.25);line-height:0}
+  .bookcover img{width:66px;height:auto;display:block}
+  .bookinfo{flex:1;min-width:0}
+  .booklink{font-weight:700;color:var(--gov);white-space:nowrap}
   .books .bh{display:block;font-size:.7rem;font-weight:700;letter-spacing:.03em;
     color:var(--gov);margin-bottom:4px}
   .books a{color:var(--prof);font-weight:600;text-decoration:none}
@@ -191,6 +201,26 @@
   .pinchip:hover{filter:brightness(1.05);color:#fff}
   .note{background:rgba(255,246,229,.8);backdrop-filter:blur(8px);border-radius:16px;padding:14px;
     font-size:.8rem;color:#9a6b1a;margin-top:20px;border:1.5px solid rgba(255,224,163,.8)}
+  .searchwrap{margin:4px 0 8px}
+  .searchbox{position:relative;display:flex;align-items:center;gap:9px;background:rgba(255,255,255,.92);border:2px solid rgba(139,92,246,.4);border-radius:16px;padding:11px 15px;box-shadow:0 8px 24px rgba(59,91,255,.12)}
+  .searchbox:focus-within{border-color:var(--grad2);box-shadow:0 10px 30px rgba(139,92,246,.22)}
+  .searchbox .sicon{font-size:18px;opacity:.85}
+  .searchbox input{flex:1;border:none;outline:none;background:transparent;font-family:inherit;font-size:15px;color:var(--ink);min-width:0}
+  .searchbox input::placeholder{color:#a99ec8}
+  .clearx{display:none;cursor:pointer;color:#b0a4cc;font-size:15px;line-height:1;padding:3px 7px;border-radius:50%;user-select:none}
+  .clearx:hover{background:#eee6ff;color:var(--grad2)}
+  .suggest{display:none;position:absolute;top:calc(100% + 7px);left:0;right:0;background:#fff;border:1px solid rgba(120,90,180,.2);border-radius:14px;box-shadow:0 14px 34px rgba(60,50,140,.2);overflow:hidden auto;z-index:60;max-height:min(60vh,360px)}
+  .sug-item{padding:10px 15px;font-size:14px;cursor:pointer;display:flex;align-items:center;gap:9px;border-bottom:1px solid #f2eefb}
+  .sug-item:last-child{border-bottom:none}
+  .sug-item:hover{background:#f6f3ff}
+  .sug-item .sug-cat{margin-left:auto;font-size:11px;color:#a99ec8;white-space:nowrap;flex-shrink:0}
+  .sug-item b{color:var(--grad2)}
+  .examples{margin:0 0 12px;display:flex;flex-wrap:wrap;gap:7px;align-items:center}
+  .examples .exlabel{font-size:12.5px;color:var(--muted);font-weight:600}
+  .exchip{font-size:12.5px;padding:4px 11px;border-radius:20px;background:rgba(255,255,255,.82);border:1px solid rgba(139,92,246,.3);color:var(--grad2);cursor:pointer;transition:.15s;white-space:nowrap}
+  .exchip:hover{background:var(--grad2);color:#fff;border-color:transparent}
+  .peakline{margin:8px 0 2px;font-size:.8rem;color:#b45309;background:rgba(255,213,128,.22);border:1px solid rgba(245,158,11,.32);border-radius:10px;padding:6px 10px;line-height:1.45}
+  .peakline b{color:#92400e}
   footer{margin-top:22px;padding:16px 4px;font-size:.78rem;color:var(--muted);text-align:center}
   footer b{color:var(--ink)}
 
@@ -252,28 +282,6 @@
   .pc-fair{background:linear-gradient(120deg,rgba(46,224,200,.12),rgba(91,141,255,.10));border:1px solid rgba(46,224,200,.3);border-radius:14px;padding:13px 15px}
   .pc-fair h4{font-size:14px;margin:0}.pc-fair p{font-size:12px;color:#4c6b7a;margin-top:5px;line-height:1.5}
   .pc-foot{margin-top:18px;font-size:11.5px;color:#9385b8;line-height:1.6;border-top:1px solid var(--pc-line);padding-top:12px}
-
-  .peakline{margin:8px 0 2px;font-size:.8rem;color:#b45309;background:rgba(255,213,128,.22);border:1px solid rgba(245,158,11,.32);border-radius:10px;padding:6px 10px;line-height:1.45}
-  .peakline b{color:#92400e}
-  /* ===== ช่องค้นหาในหน้าเว็บ ===== */
-  .searchwrap{max-width:760px;margin:0 auto 8px}
-  .searchbox{position:relative;display:flex;align-items:center;gap:9px;background:rgba(255,255,255,.92);border:2px solid rgba(168,85,255,.35);border-radius:16px;padding:12px 15px;box-shadow:0 8px 24px rgba(168,85,255,.12)}
-  .searchbox:focus-within{border-color:#a855ff;box-shadow:0 10px 30px rgba(168,85,255,.24)}
-  .searchbox .sicon{font-size:18px;opacity:.85}
-  .searchbox input{flex:1;border:none;outline:none;background:transparent;font-family:inherit;font-size:15px;color:var(--ink);min-width:0}
-  .searchbox input::placeholder{color:#aca1cb}
-  .clearx{display:none;cursor:pointer;color:#b0a4cc;font-size:15px;line-height:1;padding:3px 7px;border-radius:50%;user-select:none}
-  .clearx:hover{background:#f0ebff;color:#7a3fd0}
-  .suggest{display:none;position:absolute;top:calc(100% + 7px);left:0;right:0;background:#fff;border:1px solid rgba(120,90,180,.2);border-radius:14px;box-shadow:0 14px 34px rgba(80,50,140,.2);overflow:hidden auto;z-index:60;max-height:min(60vh,360px)}
-  .sug-item{padding:10px 15px;font-size:14px;cursor:pointer;display:flex;align-items:center;gap:9px;border-bottom:1px solid #f2eefb}
-  .sug-item:last-child{border-bottom:none}
-  .sug-item:hover,.sug-item.sug-hl{background:#f7f3ff}
-  .sug-item .sug-cat{margin-left:auto;font-size:11px;color:#a99ec8;white-space:nowrap;flex-shrink:0}
-  .sug-item b{color:#a855ff}
-  .examples{max-width:760px;margin:0 auto 4px;display:flex;flex-wrap:wrap;gap:7px;align-items:center}
-  .examples .exlabel{font-size:12.5px;color:#8478a8;font-weight:600}
-  .exchip{font-size:12.5px;padding:4px 11px;border-radius:20px;background:rgba(255,255,255,.82);border:1px solid rgba(168,85,255,.28);color:#7a3fd0;cursor:pointer;transition:.15s;white-space:nowrap}
-  .exchip:hover{background:#a855ff;color:#fff;border-color:transparent}
 </style>
 </head>
 <body>
@@ -281,7 +289,7 @@
 <div class="hero">
   <h1>⚡ ExamRadar</h1>
   <p>เรดาร์นับถอยหลังสนามสอบ + เทรนด์กระแสมาแรง — โรงเรียน · สาธิต · โอลิมปิก · มหาลัย · ทหาร-ตำรวจ · ราชการ · รัฐวิสาหกิจ · วิชาชีพ · การเงิน · ภาษา · ต่างประเทศ · Soft Skill</p>
-  <span class="stamp">🗓️ อัปเดต 14 ก.ย. 2569 · แจ้งเตือนรายสัปดาห์</span>
+  <span class="stamp">🗓️ อัปเดต 21 ก.ย. 2569 · แจ้งเตือนรายสัปดาห์</span>
 </div>
 
 <div class="glass newswrap" id="newsfeed"></div>
@@ -302,17 +310,8 @@
 
 <div class="glass popwrap" id="popchart"></div>
 
-<div class="searchwrap">
-  <div class="searchbox">
-    <span class="sicon">🔍</span>
-    <input id="q" type="text" autocomplete="off" spellcheck="false" placeholder="พิมพ์อะไรก็ค้นเจอ — ชื่อสนาม · หน่วยงาน · วิชา · เดือนสอบ (เช่น IMSO, ก.พ., พยาบาล, TOEIC)">
-    <span class="clearx" id="clearq" title="ล้างคำค้น">✕</span>
-    <div class="suggest" id="suggest"></div>
-  </div>
-</div>
-<div class="examples" id="examples"><span class="exlabel">💡 ลองค้น:</span></div>
-
-<div class="filters" id="filters">
+<div class="layout">
+<aside class="filters" id="filters"><div class="side-h">📂 หมวดสอบ</div>
   <span class="chip active" data-f="all">🌈 ทั้งหมด</span>
   <span class="chip" data-f="new">✨ มาใหม่ล่าสุด</span>
   <span class="chip" data-f="gap">💡 หมวดที่เรายังไม่มี</span>
@@ -331,9 +330,13 @@
   <span class="chip" data-f="inter">🌏 ต่างประเทศ</span>
   <span class="chip" data-f="lang">🈶 ภาษาต่างประเทศ</span>
   <span class="chip" data-f="soft">🌱 Soft Skill ยอดนิยม</span>
+</aside>
+<div class="side">
+  <div class="searchwrap"><div class="searchbox"><span class="sicon">🔍</span><input id="q" type="text" autocomplete="off" spellcheck="false" placeholder="พิมพ์อะไรก็ค้นเจอ — เช่น IMSO, ก.พ., พยาบาล, TOEIC, GED"><span class="clearx" id="clearq" title="ล้างคำค้น">✕</span><div class="suggest" id="suggest"></div></div></div>
+  <div class="examples" id="examples"><span class="exlabel">💡 ลองค้น:</span></div>
+  <div id="cardArea"></div>
 </div>
-
-<div id="cardArea"></div>
+</div>
 
 <div class="note">
   💡 <b>อยากให้อัปเดตทุกสัปดาห์?</b> เปิดแชตพิมพ์ว่า "อัปเดตตารางสอบ" ผมจะค้นข้อมูลล่าสุดแล้วสร้างไฟล์ใหม่ให้ · วันที่บางรายการอาจเปลี่ยนได้ ยืนยันกับเว็บทางการก่อนสมัครทุกครั้ง
@@ -600,8 +603,7 @@ const exams = [
    dates:[["รอบแรก (ระดับเขตพื้นที่)","สอบ ~ต้น ส.ค. (ปี 69 จัดแล้ว)",true],["รอบสอง / ระดับประเทศ","~ก.ย.–ต.ค. (ผู้ผ่านรอบแรก)",false],["ค่าย + แข่งนานาชาติ","~พ.ย.–ธ.ค.",false],["ระดับ","ป.4–6 · แยกสายคณิต และ วิทยาศาสตร์",false]],
    apps:"ผู้สมัคร ~10,000–30,000 คน/ปี (รอบแรกทั่วประเทศ)", seats:"คัดเป็นตัวแทนประเทศไทยไปแข่งเวทีนานาชาติ (ทีมเล็ก)",
    prep:"โอลิมปิกคณิต–วิทย์ระดับประถม (ป.4–6) สาย สพฐ. · รอบแรกสอบระดับเขตพื้นที่ แข่งกันทั้งประเทศ เนื้อหาเกินหลักสูตรปกติ เน้นคิดวิเคราะห์ · ⚠️ ปฏิทินเลื่อนมาเร็ว: ปี 67 เคยสอบ มี.ค. แต่ปี 69 ขยับมา ส.ค. (เช็กวันทางการทุกปี) · คู่แข่งหลักคือแนวข้อสอบเก่า/ติวเตอร์แจกฟรี — หนังสือรวมเล่มจัดระบบ+เฉลยละเอียดยังมีน้อย = โอกาส",
-   fee:"ค่าสมัครตามเขตพื้นที่ (หลักร้อย)",
-   link:"https://imso.obec.go.th", priceza:"https://www.priceza.com/s/ราคา/หนังสือ-แข่งขันคณิตศาสตร์"},
+   fee:"ค่าสมัครตามเขตพื้นที่ (หลักร้อย)", link:"https://imso.obec.go.th", priceza:"https://www.priceza.com/s/ราคา/หนังสือ-แข่งขันคณิตศาสตร์"},
 
   // ===== เตรียมทหาร – ตำรวจ =====
   {name:"นักเรียนเตรียมทหาร (4 เหล่า)", org:"จปร. · นายเรือ · นายเรืออากาศ · นายร้อยตำรวจ", cat:"mil", tag:"ทหาร-ตำรวจ",
@@ -714,8 +716,8 @@ const exams = [
   // ===== เทรนด์หนังสือมาแรง (อ่านสัญญาณ + ทำนาย 6–12 เดือน) =====
   {name:"โรแมนซ์แฟนตาซี (Romantasy) สาย BookTok", org:"คลื่นนักอ่าน Gen Z จาก TikTok", cat:"trend", tag:"เทรนด์",
    key:null, keyLabel:"พีคต่อเนื่อง 6–12 เดือน (คาดการณ์)",
-   dates:[["สัญญาณโซเชียล","#BookTok ดันโรแมนซ์แฟนตาซีขายทั่วโลก+ไทย",true],["7 สายย่อยมาแรงปี 2026","Romantasy(อันดับ 1) · Rom-Com · Slow Burn · Second Chance · Healing · Dark Romance · Diversity",false],["กลุ่มเป้าหมาย","Gen Z หญิง 15–28 ปี · ตลาดหนังสือไทยแตะ ~2 หมื่นล้าน",false]],
-   prep:"📖 มุมทำหนังสือ: นิยายแปล/ไทยแนวโรแมนซ์ + ปกสวยสะสม + special edition ขอบสี · Romantasy ยังครองอันดับ 1 จาก BookTok · ปี 2026 แตกสายย่อยชัด — Dark Romance & Slow Burn มาแรงเพิ่ม · Healing เน้น healthy relationship · Gen Z ครองสัดส่วนนักซื้อสูงสุด (สัปดาห์หนังสือครั้งล่าสุดเงินสะพัด 500 ล้าน+) · ทำเป็นซีรีส์/บอกซ์เซ็ต ปั้นแฟนคลับ",
+   dates:[["สัญญาณโซเชียล","#BookTok ดันโรแมนซ์แฟนตาซีขายทั่วโลก+ไทย",true],["ช่วงพีค (คาดการณ์)","แรงต่อเนื่องถึงปี 2570",false],["กลุ่มเป้าหมาย","Gen Z หญิง 15–28 ปี",false]],
+   prep:"📖 มุมทำหนังสือ: นิยายแปล/นิยายไทยแนวโรแมนซ์แฟนตาซี (romantasy) + ปกสวยสะสม + special edition ขอบสี · BookTok ไทยกำลังโตตามสากลและยังไม่พีค · เหมาะทำเป็นซีรีส์/บอกซ์เซ็ต ปั้นแฟนคลับต่อเนื่อง",
    fee:"โอกาสสูง · คู่แข่งไทยยังไม่หนาแน่น",
    link:"https://www.jamsai.com/blog-details/community-booktok/"},
 
@@ -728,8 +730,8 @@ const exams = [
 
   {name:"AI & ทักษะดิจิทัลใช้จริง", org:"ChatGPT · สร้างรายได้ · ทำงานเร็วขึ้น", cat:"trend", tag:"เทรนด์",
    key:null, keyLabel:"หน้าต่างทอง 6–12 เดือน (คาดการณ์)",
-   dates:[["สัญญาณโซเชียล","คอนเทนต์สอน AI/ทำเงินด้วย AI ไวรัลต่อเนื่อง",true],["ช่วงพีค (คาดการณ์)","ยังโตแรง แต่ต้องรีบจับก่อนอิ่มตัว",false],["กลุ่มเป้าหมาย","วัยทำงาน ฟรีแลนซ์ เจ้าของธุรกิจ",false]],
-   prep:"📖 มุมทำหนังสือ: คู่มือใช้ AI ทำงาน/ทำคอนเทนต์/หารายได้แบบจับมือทำ (prompt สำเร็จรูป) · เนื้อหาต้องอัปเดตไว ทำเป็นซีรีส์รายอาชีพ (ครู แม่ค้า สายครีเอเตอร์) · หน้าต่างขายกำลังเปิด ควรออกเร็ว",
+   dates:[["4 สกิล AI มาแรงปี 2026","Prompting · Chatbot · AI Agents · Vibe Coding",true],["สัญญาณ","องค์กรปี 2026 ต้องการทักษะ AI · คอนเทนต์สอน AI ไวรัลต่อเนื่อง",false],["กลุ่มเป้าหมาย","วัยทำงาน ฟรีแลนซ์ นักศึกษา เจ้าของธุรกิจ",false]],
+   prep:"📖 มุมทำหนังสือ: คู่มือใช้ AI ทำงานจริง — Prompting (สั่งงาน AI), สร้าง Chatbot, AI Agents (ให้ AI ทำงานแทน), Vibe Coding (เขียนโค้ดด้วย AI) · prompt สำเร็จรูปรายอาชีพ (ครู/แม่ค้า/ครีเอเตอร์) · เนื้อหาอัปเดตไว ทำเป็นซีรีส์ · หน้าต่างขายกำลังเปิด ควรออกเร็วก่อนอิ่มตัว",
    fee:"โอกาสสูงมาก · แต่เนื้อหาเก่าเร็ว",
    link:"https://www.naiin.com/product/detail/603996"},
 
@@ -940,7 +942,7 @@ const exams = [
    prep:"เส้นทางหลักสูตรอังกฤษ · IGCSE → AS/A-Level · เลือกสอบรายวิชา · ใช้ยื่นมหาลัยทั่วโลกรวมหลักสูตรอินเตอร์ในไทย · ตลาดติว/หนังสือระดับพรีเมียม",
    fee:"ค่าสอบต่อวิชา (หลักพันบาท)",
    books:"เตรียมสอบ IGCSE/A-Level", booklink:"https://thinkbeyondbook.com/product/categories/141", link:"https://www.britishcouncil.or.th"},
-  {name:"สอบ ก.พ. ภาค ก 2569", org:"สำนักงาน ก.พ. (Paper & Pencil + e-Exam)", cat:"gov", tag:"ราชการ",
+  {name:"สอบ ก.พ. ภาค ก 2569", org:"สำนักงาน ก.พ. (Paper & Pencil)", cat:"gov", tag:"ราชการ",
    key:null, keyLabel:"ประกาศผลรอบ 69 แล้ว · รอบ 70 เปิดต้นปี",
    dates:[["รับสมัคร","14 ม.ค.–3 ก.พ. 69 (ปิดแล้ว)",false],["สอบข้อเขียน","5 ก.ค. 69",false],["ประกาศผล","ภายใน 15 ก.ย. 69",true]],
    fee:"<b>ค่าสมัคร ~330 บาท</b> · 450,000 ที่นั่ง 14 ศูนย์", apps:"ผู้สมัคร ~400,000–500,000 คน/ปี", seats:"450,000 ที่นั่งสอบ · 14 ศูนย์", prep:"3 วิชา: ความสามารถทั่วไป (คณิต-เหตุผล) + ภาษาไทย + ภาษาอังกฤษ · บางระดับเพิ่มกฎหมาย · ต้องผ่านก่อนสมัคร ภาค ข ของกรมต่างๆ", books:"คู่มือสอบ ก.พ. ภาค ก (ความสามารถทั่วไป/ไทย/อังกฤษ)", booklink:"https://thinkbeyondbook.com/product/categories/130", link:"https://job3.ocsc.go.th"},
@@ -1129,26 +1131,26 @@ const exams = [
    prep:"รอบ 1-2 สมัครกับมหาลัยโดยตรง · รอบ 3-4 ผ่าน mytcas · คะแนน TGAT/TPAT/A-Level ใช้ได้ทั้ง 4 รอบ (ปีเดียวกัน)", link:"https://www.mytcas.com"},
 
 
-  // ===== เพิ่มเติม: โอลิมปิกครบ · อังกฤษในไทย · รัฐวิสาหกิจ · ทหาร · ราชการ · วิชาชีพ · ต่างประเทศ · การเงินสากล =====
+  // ===== สนามเพิ่มเติม (โอลิมปิก·อังกฤษในไทย·รัฐวิสาหกิจ·ทหาร·ราชการ·วิชาชีพ·ต่างประเทศ·การเงิน·ทุน·ธรรมศึกษา·ตำรวจ ป.ตรี) =====
   {name:"IJSO — วิทยาศาสตร์โอลิมปิก ม.ต้น (นานาชาติ)", org:"สอวน./สสวท. · International Junior Science Olympiad", cat:"olym", tag:"แข่งขันวิชาการ",
-   key:null, keyLabel:"คัดตัวแทนช่วงกลางปี · แข่งนานาชาติปลายปี",
+   key:null, keyLabel:"คัดตัวแทนกลางปี · แข่งนานาชาติปลายปี",
    dates:[["คัดเลือกในประเทศ","ผ่าน สอวน./สสวท. (ฟิสิกส์-เคมี-ชีวะรวม)",true],["ระดับ","ม.ต้น (อายุ ≤15)",false],["แข่งนานาชาติ","~ธ.ค. (ทีมชาติ)",false]],
    apps:"ผู้สมัคร ~5,000–15,000 คน/ปี", seats:"คัดเป็นทีมชาติ (ทีมเล็ก)",
-   prep:"โอลิมปิกวิทย์รวม 3 สาขาสำหรับ ม.ต้น · ต่อยอดจากสนามคัด สอวน./สสวท. · กลุ่มเป้าหมายคุณภาพสูง เก็บพอร์ตเข้าห้องเรียนพิเศษ/มหาลัย · หนังสือแนวข้อสอบเฉพาะ IJSO ยังน้อย = โอกาส",
+   prep:"โอลิมปิกวิทย์รวม 3 สาขาสำหรับ ม.ต้น · ต่อยอดจากสนามคัด สอวน./สสวท. · หนังสือแนวข้อสอบเฉพาะ IJSO ยังน้อย = โอกาส",
    fee:"ตามสนามคัดเลือก", link:"https://www.posn.or.th", priceza:"https://www.priceza.com/s/ราคา/หนังสือ-โอลิมปิกวิทยาศาสตร์"},
 
   {name:"สอวน. ค่าย 2 → ผู้แทนประเทศ (IMO·IPhO·IChO·IBO)", org:"มูลนิธิ สอวน. + สสวท. · เส้นทางเหรียญโอลิมปิกโลก", cat:"olym", tag:"แข่งขันวิชาการ",
    key:null, keyLabel:"ค่าย 2 ~มี.ค.–เม.ย. · แข่งโลก ~ก.ค.–ส.ค.",
    dates:[["ค่าย 1 → ค่าย 2","สอบเลื่อนค่าย (ปลายปี → ต้นปี)",true],["คัดผู้แทนประเทศ","สสวท. จัดสอบ/ค่ายเข้ม",false],["แข่งโอลิมปิกโลก","IMO/IPhO/IChO/IBO ~ก.ค.–ส.ค.",false]],
    apps:"ผู้แข่ง ~2,000–5,000 คน/ปี (ระดับค่าย)", seats:"ผู้แทนประเทศ 4–6 คน/วิชา",
-   prep:"เส้นทางสูงสุดของสายโอลิมปิก (คณิต ฟิสิกส์ เคมี ชีวะ) · เนื้อหาลึกระดับมหาวิทยาลัย · กลุ่มเล็กแต่จริงจังมาก ยอมจ่ายหนังสือ/โจทย์ระดับสูง · คู่แข่งสำนักพิมพ์น้อยมาก = โอกาสพรีเมียม",
+   prep:"เส้นทางสูงสุดของสายโอลิมปิก (คณิต ฟิสิกส์ เคมี ชีวะ) · เนื้อหาลึกระดับมหาวิทยาลัย · กลุ่มเล็กแต่จริงจังมาก ยอมจ่ายหนังสือ/โจทย์ระดับสูง = โอกาสพรีเมียม",
    fee:"ไม่มี (ทุน สอวน./สสวท.)", link:"https://www.posn.or.th", priceza:"https://www.priceza.com/s/ราคา/หนังสือ-โอลิมปิกวิชาการ"},
 
   {name:"คอมพิวเตอร์โอลิมปิก (สอวน.คอม → IOI)", org:"สอวน. สาขาคอมพิวเตอร์ · International Olympiad in Informatics", cat:"olym", tag:"แข่งขันวิชาการ",
    key:null, keyLabel:"ค่าย สอวน.คอม · แข่ง IOI ปลายปี",
    dates:[["สอวน. คอมพิวเตอร์","ค่าย 1–2 (เขียนโปรแกรม/อัลกอริทึม)",true],["ระดับ","ม.ต้น–ม.ปลาย",false],["IOI","แข่งนานาชาติ ~ก.ค.–ส.ค.",false]],
    apps:"ผู้สมัคร ~2,000–5,000 คน/ปี", seats:"ผู้แทนประเทศ 4 คน",
-   prep:"สายเขียนโปรแกรม/อัลกอริทึม มาแรงตามกระแส coding · ต่อยอดเข้าวิศวคอม/AI ได้ดี · หนังสือภาษาไทยแนวนี้ยังน้อยมาก เน้นโจทย์ + เฉลยโค้ด = โอกาสสูง",
+   prep:"สายเขียนโปรแกรม/อัลกอริทึม มาแรงตามกระแส coding · ต่อยอดเข้าวิศวคอม/AI · หนังสือภาษาไทยแนวนี้ยังน้อยมาก เน้นโจทย์+เฉลยโค้ด = โอกาสสูง",
    fee:"ตามสนาม", link:"https://www.posn.or.th", priceza:"https://www.priceza.com/s/ราคา/หนังสือ-อัลกอริทึม-เขียนโปรแกรม"},
 
   {name:"แข่งขันคณิต–วิทย์ สพฐ. นานาชาติ ระดับ ม.ต้น", org:"สพฐ. · รอบเขตพื้นที่ → ระดับประเทศ (พี่ของ IMSO)", cat:"olym", tag:"แข่งขันวิชาการ",
@@ -1169,14 +1171,14 @@ const exams = [
    key:null, keyLabel:"สอบได้เกือบทุกสัปดาห์ทั้งปี",
    dates:[["รูปแบบ","ฟัง-อ่าน (Listening & Reading) 990 คะแนน",true],["ใช้ทำอะไร","สมัครงานบริษัท · เลื่อนขั้น · จบ ป.ตรีบางคณะ",false],["สอบ","ศูนย์สอบทั่วประเทศ ทั้งปี",false]],
    apps:"ผู้สอบ ~100,000+ คน/ปีในไทย", seats:"ไม่จำกัด (สอบซ้ำได้)",
-   prep:"ตลาดใหญ่ที่สุดของอังกฤษวัดระดับในไทย · คนทำงาน/นักศึกษาจบใหม่สอบจำนวนมากทุกปี · ดีมานด์นิ่งทั้งปี ขายได้ตลอด · คู่แข่งเยอะแต่ตลาดใหญ่มาก จุดขายคือเก็งแนวข้อสอบ+เทคนิคทำเร็ว",
+   prep:"ตลาดใหญ่ที่สุดของอังกฤษวัดระดับในไทย · คนทำงาน/นักศึกษาจบใหม่สอบจำนวนมากทุกปี · ดีมานด์นิ่งทั้งปี ขายได้ตลอด · จุดขายคือเก็งแนวข้อสอบ+เทคนิคทำเร็ว",
    fee:"ค่าสอบ ~1,500 บาท/ครั้ง", peak:{main:"มี.ค.–พ.ค. (จบใหม่ หางาน)",second:"ต.ค.–พ.ย."}, link:"https://www.ets.org/toeic", priceza:"https://www.priceza.com/s/ราคา/หนังสือ-TOEIC"},
 
   {name:"CU-TEP · TU-GET · CEFR (อังกฤษยื่นมหาลัยไทย)", org:"จุฬาฯ / ธรรมศาสตร์ / กรอบ CEFR · ยื่น ป.ตรี-โท ในไทย", cat:"inter", tag:"ยื่นคะแนน",
    key:null, keyLabel:"สอบหลายรอบ/ปี ตามศูนย์",
    dates:[["CU-TEP","ข้อสอบอังกฤษจุฬาฯ (ยื่นเข้า/จบ)",true],["TU-GET","ข้อสอบอังกฤษธรรมศาสตร์",false],["CEFR","กรอบเทียบระดับ A1–C2 (ครู/ราชการใช้)",false]],
    apps:"ผู้สอบ ~50,000–100,000 คน/ปี (รวมทุกสนาม)", seats:"ไม่จำกัด (สอบซ้ำได้)",
-   prep:"อังกฤษวัดระดับสำหรับยื่นเข้า/จบมหาลัยไทย + สอบครู/ราชการ (CEFR) · ดีมานด์ต่อเนื่อง · หนังสือเฉพาะ CU-TEP/TU-GET มีบางเจ้า จุดขายคือแนวข้อสอบตรงสนาม + คำศัพท์เฉพาะ",
+   prep:"อังกฤษวัดระดับสำหรับยื่นเข้า/จบมหาลัยไทย + สอบครู/ราชการ (CEFR) · ดีมานด์ต่อเนื่อง · จุดขายคือแนวข้อสอบตรงสนาม + คำศัพท์เฉพาะ",
    fee:"ค่าสอบตามสนาม (~900–1,000 บาท)", link:"https://www.atc.chula.ac.th", priceza:"https://www.priceza.com/s/ราคา/หนังสือ-CU-TEP"},
 
   {name:"กลุ่มการประปา (กปน. / กปภ.)", org:"การประปานครหลวง · การประปาส่วนภูมิภาค", cat:"soe", tag:"รัฐวิสาหกิจ",
@@ -1200,7 +1202,7 @@ const exams = [
    prep:"กลุ่มการบินยอดฮิต ค่าตอบแทนดี แข่งขันสูงมาก · ต้องเน้นอังกฤษ+บุคลิก+ความรู้ทั่วไป · หนังสือเตรียมสอบ ทอท./แอร์-กราวด์ ขายดีต่อเนื่อง",
    fee:"ค่าสมัครตามประกาศ", link:"https://www.airportthai.co.th", priceza:"https://www.priceza.com/s/ราคา/หนังสือ-สอบ-ทอท"},
 
-  {name:"องค์การเภสัชกรรม & รัฐวิสาหกิจสายสุขภาพ", org:"อภ. · สภากาชาดไทย · รัฐวิสาหกิจ/องค์การมหาชนสายสุขภาพ", cat:"soe", tag:"รัฐวิสาหกิจ",
+  {name:"องค์การเภสัชกรรม & รัฐวิสาหกิจสายสุขภาพ", org:"อภ. · สภากาชาดไทย · องค์การมหาชนสายสุขภาพ", cat:"soe", tag:"รัฐวิสาหกิจ",
    key:null, keyLabel:"รับสมัครเป็นรอบ",
    dates:[["ตำแหน่ง","เภสัชกร · นักวิทย์ · ผลิต/ควบคุมคุณภาพ · ธุรการ",true],["วุฒิ","ปวส.–ป.ตรี/โท สายวิทย์-สุขภาพ",false],["สวัสดิการ","มั่นคง เหมือนราชการ",false]],
    apps:"ผู้สมัคร ~3,000–10,000 คน/รอบ", seats:"ตามอัตราว่าง",
@@ -1225,7 +1227,7 @@ const exams = [
    key:null, keyLabel:"รับผ่าน TCAS/สอบตรง ~ต้นปี",
    dates:[["วพม.","แพทย์ทหาร (คะแนน กสพท + เงื่อนไขทหาร)",true],["วิทยาลัยพยาบาลกองทัพ","พยาบาลทหาร/ตำรวจ (ทุน+ประจำการ)",false],["จุดเด่น","เรียนฟรี/ทุน + บรรจุแน่นอน",false]],
    apps:"ผู้สมัคร ~5,000–15,000 คน/ปี", seats:"รับจำกัด (แข่งสูงมาก)",
-   prep:"สายแพทย์-พยาบาลในเครื่องแบบ เรียนฟรี/มีทุน + บรรจุแน่นอน = แข่งขันสูงมาก · กลุ่มเป้าหมายคุณภาพสูง · คู่มือเฉพาะ วพม./วพบ. + แนวข้อสอบสัมภาษณ์ ขายได้ราคา",
+   prep:"สายแพทย์-พยาบาลในเครื่องแบบ เรียนฟรี/มีทุน + บรรจุแน่นอน = แข่งขันสูงมาก · กลุ่มคุณภาพสูง · คู่มือเฉพาะ วพม./วพบ. + แนวข้อสอบสัมภาษณ์ ขายได้ราคา",
    fee:"ตามระเบียบรับสมัคร", link:"https://www.pcm.ac.th", priceza:"https://www.priceza.com/s/ราคา/หนังสือ-สอบพยาบาล"},
 
   {name:"สายสาธารณสุข (พยาบาลวิชาชีพ / นักวิชาการ สธ.)", org:"กระทรวงสาธารณสุข · สสจ./รพ. ทั่วประเทศ", cat:"gov", tag:"ราชการ",
@@ -1291,8 +1293,6 @@ const exams = [
    prep:"คุณวุฒิการเงินระดับโลก คนสายแบงก์/กองทุน/ความเสี่ยงต้องการ · เนื้อหาหนักเป็นภาษาอังกฤษ · โอกาสของ สนพ.ไทยคือสรุป/ติวภาษาไทยประกอบ + คำศัพท์ ตลาดเฉพาะกลุ่มกำลังซื้อสูง",
    fee:"ค่าสอบสูง (หลักหมื่น)", link:"https://www.cfainstitute.org", priceza:"https://www.priceza.com/s/ราคา/หนังสือ-CFA"},
 
-
-  // ===== อัปเดตรายสัปดาห์ 25 ส.ค. 69: สนามที่ตกหล่น (ทุนรัฐบาล · ธรรมศึกษา) =====
   {name:"ทุนรัฐบาล ก.พ. · เล่าเรียนหลวง · พสวท. · ODOS", org:"สำนักงาน ก.พ. / อว. · เส้นทางทุนเรียนต่อในและต่างประเทศ", cat:"inter", tag:"ยื่นคะแนน", isNew:true,
    key:null, keyLabel:"ทุน ก.พ. รับสมัคร ~พ.ย.–ธ.ค.",
    dates:[["ทุน ก.พ.","สมัคร ~พ.ย.–ธ.ค. · สอบข้อเขียน ~ต้นปี",true],["ทุนเล่าเรียนหลวง (King's)","เด็กเก่งเรียนต่อ ป.ตรี ต่างประเทศ",false],["พสวท./ODOS","ทุนสายวิทย์ · ทุนเรียนต่อรอบโลก",false]],
@@ -1307,8 +1307,6 @@ const exams = [
    prep:"สนามที่มีผู้เข้าสอบมากที่สุดแห่งหนึ่งของไทย (หลักล้านคน/ปี) เพราะโรงเรียนจัดสอบทั้งระบบ · ตลาดคู่มือ/สรุปธรรมศึกษา ตรี-โท-เอก ใหญ่และซื้อซ้ำทุกปี คู่แข่งเป็น สนพ.สายพุทธไม่กี่เจ้า = โอกาสตลาดใหญ่ที่มองข้าม",
    fee:"ไม่มี/เล็กน้อย", peak:{main:"ก.ค.–พ.ย. (ก่อนสอบสนามหลวง)",second:"—"}, market:{rivals:"คู่แข่งน้อยมาก — มีแค่ สนพ.สายพุทธ 2–3 เจ้า แต่ตลาดผู้สอบหลักล้านคน/ปี",gap:"น้อย"}, link:"https://www.gongtham.net", priceza:"https://www.priceza.com/s/ราคา/หนังสือ-ธรรมศึกษา"},
 
-
-  // ===== อัปเดต 8 ก.ย. 69: ตำรวจสายอำนวยการ/ปราบปราม (ป.ตรี) =====
   {name:"ตำรวจสายอำนวยการ/ปราบปราม (บุคคลภายนอก วุฒิ ป.ตรี)", org:"สตช. · รับวุฒิ ป.ตรี เป็นตำรวจชั้นสัญญาบัตร/ประทวน", cat:"mil", tag:"ทหาร-ตำรวจ", isNew:true,
    key:null, keyLabel:"เปิดรับเป็นรอบ (อัตราเยอะปีนี้)",
    dates:[["ตำแหน่ง","อำนวยการ · ปราบปราม · เทคนิค (วุฒิ ป.ตรี)",true],["อัตราปีนี้","สายปราบปราม ~7,550 อัตรา (บุคคลภายนอก)",false],["วิชาสอบ","ความรู้ทั่วไป · กฎหมาย · อังกฤษ · เฉพาะตำแหน่ง",false]],
@@ -1416,6 +1414,8 @@ function marketBlock(e){
   return '<div class="market"><span class="mh">🏪 ตลาด / คู่แข่ง</span>'+m.rivals+
     '<br><span class="gapbadge '+g[0]+'">'+g[1]+'</span>'+rl+'</div>';
 }
+const bookCover={"2327":"https://sub.serazu.com/library/products/2327/8859099306232.jpg","1824":"https://sub.serazu.com/library/products/1824/8859099303712.jpg","4372":"https://sub.serazu.com/library/products/4372/9786164493933.jpg","5829":"https://sub.idcpremier.com/library/products/5829/9786164495586.jpg","5830":"https://sub.idcpremier.com/library/products/5830/9786164495593.jpg"};
+function coverOf(e){if(!e.booklink)return '';const m=e.booklink.match(/product\/(\d+)(?:$|[/?])/);return (m&&bookCover[m[1]])?bookCover[m[1]]:'';}
 function peakBlock(e){const P=e.peak||peakByCat[e.cat];if(!P)return '';return '<div class="peakline">🔥 พีคน่าขาย · <b>หลัก:</b> '+P.main+(P.second&&P.second!=='—'?' · <b>รอง:</b> '+P.second:'')+'</div>';}
 function cardHTML(e){
   const c=document.createElement('div');c.className='card'+(e.isNew?' isnew':'');
@@ -1427,7 +1427,7 @@ function cardHTML(e){
     cdPill(e)+'<div class="dates">'+d+'</div>'+peakBlock(e)+
     (e.apps?'<div class="statrow"><div class="statbox apps"><span class="sh">👥 ผู้สมัคร/เข้าสอบ (เฉลี่ย)</span><span class="sv">'+e.apps+'</span></div><div class="statbox seats"><span class="sh">🎯 จำนวนรับ/ที่นั่ง</span><span class="sv">'+e.seats+'</span></div></div>':'')+
     (e.prep?'<div class="prep"><span class="ph">📌 สิ่งที่ต้องใช้/ต้องรู้</span>'+e.prep+'</div>':'')+
-    (e.books?'<div class="books"><span class="bh">📚 หนังสือแนะนำ (ThinkBeyond)</span>'+e.books+' <a href="'+e.booklink+'" target="_blank">ดูหมวด →</a></div>':'')+
+    (e.books?(function(){var cv=coverOf(e);return '<div class="books"><span class="bh">📚 หนังสือแนะนำ (ThinkBeyond)</span><div class="bookrow">'+(cv?'<a class="bookcover" href="'+e.booklink+'" target="_blank"><img src="'+cv+'" alt="ปกหนังสือ" loading="lazy" onerror="this.parentNode.style.display=\'none\'"></a>':'')+'<div class="bookinfo">'+e.books+' <a class="booklink" href="'+e.booklink+'" target="_blank">'+(cv?'ดูเล่มนี้ →':'ดูหมวด →')+'</a></div></div></div>';})():'')+
     marketBlock(e)+
     '<div class="fee">💰 '+e.fee+'</div>'+
     '<a class="link" href="'+e.link+'" target="_blank">'+(e.cat==='trend'?'ดูแหล่งอ้างอิง →':'เว็บทางการ →')+'</a>';
@@ -1453,7 +1453,7 @@ function renderProd(){
    {id:'schsci',ic:'🔬',name:'สอบเข้า ม.4 วิทย์ (MWIT·จภ.·วมว.·KVIS)',col:'#2ee0c8',exam:[11],buy:[7,10],shelf:7,mkt:'L',opp:'กลาง',ever:false,vol:'~10,000–20,000 คน/ปี (สาย ม.4 วิทย์)',note:'สอบรอบแรก ~15 พ.ย. รับสมัคร ส.ค. → วางขายให้ทัน ก.ค. เริ่มผลิต ต.ค.–ก.พ. ปีก่อน เนื้อหาเกิน ป.6 เจาะคณิต–วิทย์เชิงลึก กลุ่มคุณภาพสูง'},
    {id:'soft',ic:'🌱',name:'Soft Skill & คอร์สได้ใบเซอร์',col:'#8f66ff',exam:[],buy:[1,12],shelf:3,mkt:'L',opp:'กลาง',ever:false,fair:true,vol:'วัยทำงาน/นักศึกษา — ตลาดกว้างหลักล้าน',note:'ไม่ผูกสอบ ผูกของขวัญ+ตั้งเป้าปีใหม่ (ธ.ค.–ม.ค.) และงานหนังสือ (มี.ค.–เม.ย./ต.ค.) EQ·สื่อสาร·ภาวะผู้นำ·คิดวิเคราะห์ ขายวัยทำงาน/นักศึกษา'},
    {id:'inter',ic:'🌏',name:'ยื่นคะแนนต่างประเทศ (IELTS·TOEFL·SAT·GED)',col:'#5b8dff',exam:[1,12],buy:[1,12],shelf:2,mkt:'L',opp:'ต่ำ',ever:true,vol:'ไทย ~หลักหมื่น–แสน คน/ปี',note:'สอบได้ทั้งปี ดีมานด์นิ่งแต่เจ้าตลาดเป็นสำนักพิมพ์ต่างชาติรายใหญ่ (Cambridge/ETS) แข่งตรงยาก → เล่นมุมสรุป/ติวภาษาไทยประกอบ หรือโฟกัสหมวดโอกาสสูงกว่า'},
-   {id:'dharma',ic:'☸️',name:'ธรรมศึกษา ตรี–โท–เอก (ธรรมสนามหลวง)',col:'#e0902e',exam:[11,12],buy:[7,11],shelf:6,mkt:'XL',opp:'สูง',ever:false,vol:'~1,000,000+ คน/ปี (ทั่วประเทศ)',note:'สนามล้านคน/ปี โรงเรียนจัดสอบทั้งระบบ ~พ.ย.–ธ.ค. → พีคซื้อ ก.ค.–พ.ย. วางขายให้ทัน มิ.ย. · คู่แข่งเป็น สนพ.สายพุทธ 2–3 เจ้า = โอกาสตลาดใหญ่ที่ถูกมองข้าม · เนื้อหา evergreen ขายซ้ำทุกปี'},
+   {id:'dharma',ic:'☸️',name:'ธรรมศึกษา ตรี–โท–เอก (ธรรมสนามหลวง)',col:'#e0902e',exam:[11,12],buy:[7,11],shelf:6,mkt:'XL',opp:'สูง',ever:false,vol:'~1,000,000+ คน/ปี (ทั่วประเทศ)',note:'สนามล้านคน/ปี โรงเรียนจัดสอบทั้งระบบ ~พ.ย.–ธ.ค. → พีคซื้อ ก.ค.–พ.ย. วางขายให้ทัน มิ.ย. · คู่แข่ง สนพ.สายพุทธ 2–3 เจ้า = โอกาสตลาดใหญ่ที่ถูกมองข้าม · evergreen ขายซ้ำทุกปี'},
   ];
   const MKTW={XL:4,L:3,M:2,S:1},OPPW={'สูง':3,'กลาง':2,'ต่ำ':1},MKTL={XL:'ตลาดใหญ่มาก',L:'ตลาดใหญ่',M:'ตลาดกลาง',S:'ตลาดเล็ก'};
   const prodWin=s=>[((s-9-1+120)%12)+1,((s-6-1+120)%12)+1];
@@ -1582,12 +1582,12 @@ function renderPop(){
 
 // ===== ข่าวใหม่ล่าสุด (แถบไฮไลต์หน้าแรก) =====
 const newsData=[
-  {t:"🏛️ ก.พ. ภาค ก 2569 ประกาศผล 15 ก.ย. นี้ — เช็กรายชื่อผู้สอบผ่าน (ใช้ยื่นสมัครงานราชการได้ทันที)",cat:"civil",d:"14 ก.ย. 69"},
-  {t:"🎓 TCAS70 Portfolio ก.ย. หลายมหาลัยเปิด/ทยอยปิด · สถาบันพระบรมราชชนก (พยาบาล/สาธารณสุข) รอบ 1 สมัคร 1–10 ธ.ค. 69",cat:"uni",d:"14 ก.ย. 69"},
-  {t:"👮 สายเครื่องแบบเปิดต่อเนื่อง: ตชด. รับครู (ปท 1) 100 อัตรา · ร.ร.นายร้อยตำรวจ + กรมกำลังพลทหาร รับพนักงานราชการ",cat:"civil",d:"14 ก.ย. 69"},
-  {t:"🔬 ร.ร.วิทย์ ม.4 (จภ./วมว./MWIT) สอบรอบแรก 15 พ.ย. — เหลือ ~2 เดือน เร่งติวเข้ม",cat:"school",d:"14 ก.ย. 69"},
-  {t:"📚 เทรนด์หนังสือ: Gen Z ดันตลาด ~2 หมื่นล้าน · Romantasy/BookTok ยังนำ + Dark Romance & Slow Burn มาแรงปี 2026",cat:"trend",d:"14 ก.ย. 69"},
-  {t:"📅 TCAS70 สอบต้นปี 70: TGAT/TPAT2-5 30 ม.ค.–1 ก.พ. · TPAT1 กสพท 13 ก.พ. · A-Level 13–15 มี.ค. 70",cat:"th",d:"14 ก.ย. 69"},
+  {t:"💻 สกิลมาแรง 2026: 4 AI Skills — Prompting · Chatbot · AI Agents · Vibe Coding · ตลาดหนังสือ/คอร์สอัปสกิลโตตามยุค AI",cat:"trend",d:"21 ก.ย. 69"},
+  {t:"🏛️ ก.พ. ภาค ก 2569 ประกาศผลแล้ว — ใช้ยื่นสมัครงานราชการได้ทันที",cat:"civil",d:"21 ก.ย. 69"},
+  {t:"🆕 ราชการเปิดใหม่: สนง.ผู้ตรวจการแผ่นดิน (24 ก.ย.–15 ต.ค.) · กรมกำลังพลทหาร 12 อัตรา · ปฏิทินครูผู้ช่วย ปี 69 ออกแล้ว",cat:"civil",d:"21 ก.ย. 69"},
+  {t:"👮 สายเครื่องแบบ: ตชด. รับครู 100 อัตรา + นายสิบตำรวจ/ปราบปราม ยังเป็นสนามใหญ่ต่อเนื่อง",cat:"civil",d:"21 ก.ย. 69"},
+  {t:"🎓 TCAS70 รอบ 1 Portfolio ยังเปิดหลายมหาลัย · สถาบันพระบรมราชชนก (พยาบาล/สาธารณสุข) รอบ 1 สมัคร 1–10 ธ.ค.",cat:"uni",d:"21 ก.ย. 69"},
+  {t:"📅 TCAS70 สอบต้นปี 70: TGAT/TPAT2-5 30 ม.ค.–1 ก.พ. · TPAT1 กสพท 13 ก.พ. · A-Level 13–15 มี.ค. · ร.ร.วิทย์ ม.4 สอบ 15 พ.ย.",cat:"th",d:"21 ก.ย. 69"},
 ];
 function renderNews(){
   const el=document.getElementById('newsfeed');
@@ -1605,69 +1605,26 @@ renderSpotlight();
 renderStats();
 renderPop();
 renderNews();
-// ===== ค้นหาในหน้าเว็บ (ค้นข้ามทุกฟิลด์ + คำแนะนำ + คำค้นตัวอย่าง) =====
+// ===== ค้นหาในหน้าเว็บ =====
 (function(){
-  const qEl=document.getElementById('q'), sug=document.getElementById('suggest'),
-        clearq=document.getElementById('clearq'), exWrap=document.getElementById('examples');
-  const norm=s=>(s==null?'':''+s).toLowerCase().replace(/[\s.\-\/·,()]/g,'');
-  const escH=s=>(''+s).replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));
+  const qEl=document.getElementById('q'), sug=document.getElementById('suggest'), clearq=document.getElementById('clearq'), exWrap=document.getElementById('examples');
+  if(!qEl) return;
+  const norm=x=>(x==null?'':''+x).toLowerCase().replace(/[\s.\-\/·,()]/g,'');
+  const escH=x=>(''+x).replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));
   const idx=exams.map(e=>({e, text:norm([e.name,e.org,e.tag,e.cat,groupNames[e.cat],e.prep,e.apps,e.books,e.keyLabel,(e.dates||[]).map(d=>d[0]+' '+d[1]).join(' ')].join(' '))}));
-  function find(q){
-    const toks=q.split(/\s+/).map(norm).filter(Boolean);
-    if(!toks.length) return [];
-    return idx.filter(it=>toks.every(t=>it.text.includes(t))).map(it=>it.e);
-  }
-  function hl(name,q){
-    const t=(q.trim().split(/\s+/)[0]||''); if(!t) return escH(name);
-    const i=name.toLowerCase().indexOf(t.toLowerCase());
-    if(i<0) return escH(name);
-    return escH(name.slice(0,i))+'<b>'+escH(name.slice(i,i+t.length))+'</b>'+escH(name.slice(i+t.length));
-  }
-  function results(q){
-    area.innerHTML='';
-    const items=find(q);
-    const head=document.createElement('div');head.className='group-title';
-    head.innerHTML='🔍 ผลการค้นหา “'+escH(q)+'” — พบ '+items.length+' รายการ';
-    area.appendChild(head);
-    if(!items.length){
-      const nt=document.createElement('div');nt.className='note';
-      nt.innerHTML='ไม่พบรายการที่ตรงกับ “'+escH(q)+'” · ลองพิมพ์คำสั้นลง หรือแตะคำค้นตัวอย่าง เช่น '+EX.slice(0,6).map(x=>'<b>'+x+'</b>').join(' · ');
-      area.appendChild(nt);return;
-    }
-    items.forEach(e=>area.appendChild(cardHTML(e)));
-  }
-  function suggest(q){
-    const items=find(q).slice(0,7);
-    if(!items.length){sug.style.display='none';return;}
-    sug.innerHTML=items.map(e=>'<div class="sug-item" data-n="'+encodeURIComponent(e.name)+'">🔎 <span>'+hl(e.name,q)+'</span><span class="sug-cat">'+groupNames[e.cat].replace(/^\S+\s/,'')+'</span></div>').join('');
-    sug.style.display='block';
-    sug.querySelectorAll('.sug-item').forEach(it=>it.addEventListener('mousedown',ev=>{
-      ev.preventDefault();
-      qEl.value=decodeURIComponent(it.dataset.n);
-      sug.style.display='none';clearq.style.display='block';
-      results(qEl.value.trim());
-      document.getElementById('cardArea').scrollIntoView({behavior:'smooth',block:'start'});
-    }));
-  }
-  function run(){
-    const q=qEl.value.trim();
-    clearq.style.display=q?'block':'none';
-    if(!q){sug.style.display='none';render(curTab);return;}
-    document.querySelectorAll('.chip').forEach(c=>c.classList.remove('active'));
-    suggest(q);results(q);
-  }
+  function find(q){const t=q.split(/\s+/).map(norm).filter(Boolean);if(!t.length)return [];return idx.filter(it=>t.every(k=>it.text.includes(k))).map(it=>it.e);}
+  function hl(name,q){const t=(q.trim().split(/\s+/)[0]||'');if(!t)return escH(name);const i=name.toLowerCase().indexOf(t.toLowerCase());if(i<0)return escH(name);return escH(name.slice(0,i))+'<b>'+escH(name.slice(i,i+t.length))+'</b>'+escH(name.slice(i+t.length));}
+  const EX=['IMSO','ก.พ.','พยาบาล','TOEIC','GED','สาธิต','TCAS','ครูผู้ช่วย','นายสิบตำรวจ','เนติบัณฑิต','IELTS','HSK','เตรียมทหาร','CFA','ธรรมศึกษา','โอลิมปิก'];
+  function results(q){area.innerHTML='';const items=find(q);const h=document.createElement('div');h.className='group-title';h.innerHTML='🔍 ผลการค้นหา “'+escH(q)+'” — พบ '+items.length+' รายการ';area.appendChild(h);if(!items.length){const nt=document.createElement('div');nt.className='note';nt.innerHTML='ไม่พบรายการที่ตรงกับ “'+escH(q)+'” · ลองพิมพ์คำสั้นลง หรือแตะคำค้นตัวอย่าง เช่น '+EX.slice(0,6).map(x=>'<b>'+x+'</b>').join(' · ');area.appendChild(nt);return;}items.forEach(e=>area.appendChild(cardHTML(e)));}
+  function suggest(q){const items=find(q).slice(0,7);if(!items.length){sug.style.display='none';return;}sug.innerHTML=items.map(e=>'<div class="sug-item" data-n="'+encodeURIComponent(e.name)+'">🔎 <span>'+hl(e.name,q)+'</span><span class="sug-cat">'+groupNames[e.cat].replace(/^\S+\s/,'')+'</span></div>').join('');sug.style.display='block';sug.querySelectorAll('.sug-item').forEach(it=>it.addEventListener('mousedown',ev=>{ev.preventDefault();qEl.value=decodeURIComponent(it.dataset.n);sug.style.display='none';clearq.style.display='block';results(qEl.value.trim());}));}
+  function run(){const q=qEl.value.trim();clearq.style.display=q?'block':'none';if(!q){sug.style.display='none';render(curTab);return;}document.querySelectorAll('.chip').forEach(c=>c.classList.remove('active'));suggest(q);results(q);}
   qEl.addEventListener('input',run);
   qEl.addEventListener('focus',()=>{if(qEl.value.trim())suggest(qEl.value.trim());});
   qEl.addEventListener('blur',()=>setTimeout(()=>{sug.style.display='none';},160));
   qEl.addEventListener('keydown',e=>{if(e.key==='Escape'){qEl.value='';run();qEl.blur();}});
   clearq.addEventListener('click',()=>{qEl.value='';run();qEl.focus();});
-  // คำค้นตัวอย่าง
-  const EX=['IMSO','ก.พ.','พยาบาล','TOEIC','สาธิต','TCAS','ครูผู้ช่วย','นายสิบตำรวจ','เนติบัณฑิต','IELTS','HSK','เตรียมทหาร','CFA','โอลิมปิก','เภสัช','ประกันภัย'];
-  EX.forEach(x=>{const c=document.createElement('span');c.className='exchip';c.textContent=x;
-    c.addEventListener('click',()=>{qEl.value=x;qEl.focus();run();document.getElementById('cardArea').scrollIntoView({behavior:'smooth',block:'start'});});
-    exWrap.appendChild(c);});
+  EX.forEach(x=>{const c=document.createElement('span');c.className='exchip';c.textContent=x;c.addEventListener('click',()=>{qEl.value=x;qEl.focus();run();});exWrap.appendChild(c);});
 })();
-
 render('all');
 </script>
 </body>
