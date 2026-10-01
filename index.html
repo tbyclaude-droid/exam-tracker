@@ -12,6 +12,7 @@
     --ink:#191433; --muted:#7b70a6; --card:rgba(255,255,255,.74); --bg:#e8ebff;
     --th:#5b8dff; --inter:#2ee0c8; --gov:#ff9a3d; --prof:#f857c0; --soft:#22c4a8; --uni:#7c5cff; --school:#ff6a5c;
     --olym:#e0a100; --mil:#5f7a3a; --soe:#c0743a; --lang:#e0455f; --fin:#1f9e6b; --trend:#c026d3; --satit:#2f8fbf;
+    --bf1:#2740d9; --bf2:#6d3bf5; --bf3:#b03bd9; --bf-alert:#ff3b5c;
   }
   *{box-sizing:border-box;margin:0;padding:0;font-family:'Prompt',sans-serif}
   html{scroll-behavior:smooth}
@@ -299,6 +300,21 @@
   .pc-fair{background:linear-gradient(120deg,rgba(46,224,200,.12),rgba(91,141,255,.10));border:1px solid rgba(46,224,200,.3);border-radius:14px;padding:13px 15px}
   .pc-fair h4{font-size:14px;margin:0}.pc-fair p{font-size:12px;color:#4c6b7a;margin-top:5px;line-height:1.5}
   .pc-foot{margin-top:18px;font-size:11.5px;color:#9385b8;line-height:1.6;border-top:1px solid var(--pc-line);padding-top:12px}
+  /* ===== Book Expo banner (ธีม Unread Messages) ===== */
+  .bookfair{position:relative;overflow:hidden;display:flex;align-items:center;gap:18px;margin:16px 0 4px;padding:18px 22px;border-radius:22px;color:#fff;background:linear-gradient(120deg,var(--bf1),var(--bf2) 55%,var(--bf3));box-shadow:0 16px 42px -16px rgba(80,40,200,.72)}
+  .bookfair::after{content:"";position:absolute;right:-34px;top:-34px;width:160px;height:160px;background:radial-gradient(circle,rgba(255,255,255,.18),transparent 70%);border-radius:50%}
+  .bookfair::before{content:"";position:absolute;left:-30px;bottom:-50px;width:120px;height:120px;background:radial-gradient(circle,rgba(255,255,255,.12),transparent 70%);border-radius:50%}
+  .bf-poster{width:92px;height:128px;object-fit:cover;border-radius:10px;flex:none;box-shadow:0 8px 22px rgba(0,0,0,.32);position:relative;z-index:1}
+  .bf-art{flex:none;position:relative;z-index:1;filter:drop-shadow(0 6px 14px rgba(0,0,0,.25))}
+  .bf-body{flex:1;min-width:0;position:relative;z-index:1}
+  .bf-tag{font-size:.73rem;font-weight:700;letter-spacing:.02em;background:rgba(255,255,255,.2);display:inline-block;padding:3px 11px;border-radius:20px;margin-bottom:7px}
+  .bf-title{font-size:1.16rem;font-weight:800;letter-spacing:-.01em}
+  .bf-theme{font-size:.85rem;margin-top:4px;opacity:.97}
+  .bf-meta{font-size:.76rem;margin-top:7px;opacity:.92;line-height:1.6}
+  .bf-cd{margin-top:9px;font-size:.8rem;font-weight:700;background:rgba(255,255,255,.17);display:inline-block;padding:5px 13px;border-radius:20px}
+  .bf-cd.live{background:var(--bf-alert);animation:bfpulse 1.6s ease-in-out infinite}
+  @keyframes bfpulse{0%,100%{opacity:1}50%{opacity:.62}}
+  @media(max-width:560px){.bookfair{flex-wrap:wrap;gap:12px}.bf-art,.bf-poster{display:none}}
 </style>
 </head>
 <body>
@@ -306,10 +322,34 @@
 <div class="hero">
   <h1>⚡ ExamRadar</h1>
   <p>เรดาร์นับถอยหลังสนามสอบ + เทรนด์กระแสมาแรง — โรงเรียน · สาธิต · โอลิมปิก · มหาลัย · ทหาร-ตำรวจ · ราชการ · รัฐวิสาหกิจ · วิชาชีพ · การเงิน · ภาษา · ต่างประเทศ · Soft Skill</p>
-  <span class="stamp">🗓️ อัปเดต 30 ก.ย. 2569 · แจ้งเตือนรายสัปดาห์</span>
+  <span class="stamp">🗓️ อัปเดต 1 ต.ค. 2569 · ช่วงมหกรรมหนังสือ ครั้งที่ 31</span>
 </div>
 
 <div class="glass newswrap" id="newsfeed"></div>
+
+<div class="bookfair" id="bookfair">
+  <img class="bf-poster" src="bookfair-poster.jpg" alt="โปสเตอร์งานหนังสือ" onload="var a=document.querySelector('.bf-art');if(a)a.style.display='none'" onerror="this.remove()">
+  <div class="bf-art" aria-hidden="true">
+    <svg viewBox="0 0 120 120" width="92" height="92" fill="none">
+      <rect x="16" y="40" width="88" height="60" rx="9" fill="#ffffff" opacity=".96"/>
+      <path d="M16 48 L60 80 L104 48" stroke="#2740d9" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+      <rect x="40" y="16" width="42" height="36" rx="5" fill="#eef1ff" stroke="#6d3bf5" stroke-width="3.5"/>
+      <line x1="48" y1="27" x2="74" y2="27" stroke="#6d3bf5" stroke-width="3.2" stroke-linecap="round"/>
+      <line x1="48" y1="35" x2="68" y2="35" stroke="#b9a7f5" stroke-width="3.2" stroke-linecap="round"/>
+      <line x1="48" y1="43" x2="72" y2="43" stroke="#b9a7f5" stroke-width="3.2" stroke-linecap="round"/>
+      <circle cx="98" cy="26" r="14" fill="#ff3b5c"/>
+      <text x="98" y="31.5" text-anchor="middle" font-size="17" fill="#fff" font-weight="800" font-family="sans-serif">1</text>
+    </svg>
+  </div>
+  <div class="bf-body">
+    <div class="bf-tag">💬 เทศกาลหนังสือกำลังมา · Book Expo Thailand 2026</div>
+    <div class="bf-title">มหกรรมหนังสือระดับชาติ ครั้งที่ 31</div>
+    <div class="bf-theme">ธีมปีนี้ “Unread Messages” — เปิดหนังสือสักเล่ม = เปิดอ่านข้อความที่รอคุณอยู่ 📩</div>
+    <div class="bf-meta">📅 23 ต.ค. – 1 พ.ย. 2569 · 📍 ศูนย์ฯ สิริกิติ์ Hall 5–7 (LG) · 🕙 10:00–21:00 · เข้าฟรี</div>
+    <div class="bf-cd" id="bf-cd"></div>
+  </div>
+</div>
+<script>(function(){var t=new Date(2026,9,23),e=new Date(2026,10,1,23,59),n=new Date(),el=document.getElementById('bf-cd');if(!el)return;var d=Math.ceil((t-n)/86400000);if(n>=t&&n<=e){el.innerHTML='🔴 กำลังจัดอยู่ตอนนี้! ถึง 1 พ.ย. — แวะบูธ สนพ. ได้เลย';el.className='bf-cd live';}else if(n<t){el.innerHTML='⏳ อีก <b>'+d+'</b> วันเริ่มงาน — เตรียมลิสต์หนังสือล่วงหน้า';}else{el.innerHTML='🗓️ งานรอบนี้จบแล้ว — เตรียมพบรอบถัดไป';}})();</script>
 
 <div class="bento">
   <div class="glass spotlight">
@@ -1649,6 +1689,7 @@ function renderPop(){
 
 // ===== ข่าวใหม่ล่าสุด (แถบไฮไลต์หน้าแรก) =====
 const newsData=[
+  {t:"📖 มหกรรมหนังสือระดับชาติ ครั้งที่ 31 (Book Expo Thailand 2026) ธีม \"Unread Messages\" · 23 ต.ค.–1 พ.ย. · ศูนย์ฯ สิริกิติ์ Hall 5-7 · เข้าฟรี 10:00–21:00 — จังหวะทองเปิดตัว/ดันยอดหนังสือ",cat:"trend",d:"1 ต.ค. 69"},
   {t:"🎓 TCAS70 รอบ 1 Portfolio เปิดรับแล้ว! จุฬาฯ (28 ก.ย.) · ม.เกษตร · ม.บูรพา ประกาศปฏิทินครบ — หลายมหาลัยทยอยเปิดรับ",cat:"uni",d:"30 ก.ย. 69"},
   {t:"📅 TCAS70 สอบต้นปี 70: TGAT/TPAT2-5 30 ม.ค.–1 ก.พ. · TPAT1 กสพท 13 ก.พ. · A-Level 13–15 มี.ค. · ร.ร.วิทย์ ม.4 (MWIT/จภ/วมว/KVIS) สอบ 15 พ.ย. 69",cat:"th",d:"30 ก.ย. 69"},
   {t:"🏛️ ก.พ. ภาค ก 2569 ประกาศผลแล้ว — นำไปยื่นสมัครงานราชการที่ต้องผ่าน ภาค ก ได้ทันที",cat:"civil",d:"30 ก.ย. 69"},
